@@ -8,7 +8,7 @@ public abstract class Task {
 
     public Task(String name) throws DongjiEmptyTaskNameException{
         if (name.trim().length() == 0) {
-            throw new DongjiEmptyTaskNameException("task name cannot be empty!");
+            throw new DongjiEmptyTaskNameException("Task name cannot be empty! Please provide a task name");
         }
         this.name = name;
     }

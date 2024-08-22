@@ -6,6 +6,7 @@ import components.Task;
 import components.Todo;
 import exceptions.DongjiEmptyTaskNameException;
 import exceptions.DongjiException;
+import exceptions.DongjiIndexOutOfBoundException;
 import exceptions.DongjiParseException;
 import exceptions.DongjiUnknownInstructionException;
 
@@ -32,6 +33,7 @@ public class Dongji {
 
     private void executeApplication() {
         String input = this.scanner.nextLine();
+
         while (!input.equals("bye")) {
             StringBuilder printStringBuilder = new StringBuilder();
 
@@ -40,6 +42,17 @@ public class Dongji {
 
                 this.addStringsToStringBuilder(printStringBuilder, listTaskString);
             } 
+            else if (input.startsWith("delete")) {
+                int index = this.parseIndex(input);
+                String deleteMessage = "";
+                try {
+                    deleteMessage = this.deleteTask(index);
+                } catch (DongjiIndexOutOfBoundException e) {
+                    deleteMessage = e.getMessage();
+                }
+
+                this.addStringsToStringBuilder(printStringBuilder, deleteMessage);
+            }
             else if (input.startsWith("mark")) {
                 int index = this.parseIndex(input);
                 String markMessage = this.mark(index);
@@ -70,7 +83,8 @@ public class Dongji {
                         this.addStringsToStringBuilder(printStringBuilder, addDeadlineMessage);
                     }
                     else {
-                        throw new DongjiUnknownInstructionException("I'm sorry, but I don't know what that means :-(");
+                        throw new DongjiUnknownInstructionException(
+                                "The command is not recognized! Please provide a valid command");
                     }
                 } catch (DongjiException e) {
                     printStringBuilder.append(e.getMessage());
@@ -82,12 +96,30 @@ public class Dongji {
         }
     }
 
-    private String mark(int index) {
+    private String deleteTask(int index) throws DongjiIndexOutOfBoundException {
+        if (index < 0 || index >= this.tasks.size()) {
+            throw new DongjiIndexOutOfBoundException("Index out of bound! Please provide a valid index of task");
+        }
+        
+        Task deletedTask = this.tasks.remove(index);
+        return "Noted. I've removed this task:\n" + deletedTask + "\nNow you have " + this.tasks.size()
+                + " tasks in the list.";
+    }
+
+    private String mark(int index) throws DongjiIndexOutOfBoundException {
+        if (index < 0 || index >= this.tasks.size()) {
+            throw new DongjiIndexOutOfBoundException("Index out of bound! Please provide a valid index of task");
+        }
+
         this.tasks.get(index).mark();
         return "Nice! I've marked this task as done:";
     }
 
-    private String unmark(int index) {
+    private String unmark(int index) throws DongjiIndexOutOfBoundException {
+        if (index < 0 || index >= this.tasks.size()) {
+            throw new DongjiIndexOutOfBoundException("Index out of bound! Please provide a valid index of task");
+        }
+
         this.tasks.get(index).unmark();
         return"Okay, I've marked this task as not done yet";
     }
@@ -103,7 +135,8 @@ public class Dongji {
         input = input.substring(6).trim();
 
         if (! this.checkEventInputValid(input)) {
-            throw new DongjiParseException("Please provide both start and end date for the event");
+            throw new DongjiParseException(
+                    "Start and end date not provided! Please provide both start and end date for the event");
         }
 
         Task task = this.parseInputToEvent(input);
