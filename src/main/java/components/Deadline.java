@@ -13,7 +13,7 @@ public class Deadline extends Task {
 
     public static Deadline fromInputString(String input) throws DongjiEmptyTaskNameException {
         if (! checkDeadlineInputValid(input)) {
-            throw new DongjiEmptyTaskNameException("Please provide a deadline for the task");
+            throw new DongjiEmptyTaskNameException("Deadline input is invalid! Please provide a deadline for the task");
         }
 
         return parseInputToDeadline(input);

@@ -60,12 +60,16 @@ public class Dongji {
                 try {
                     markMessage = this.mark(index);
                     listTaskString = this.listTasks();
+                    
+                    this.addStringsToStringBuilder(printStringBuilder, markMessage, "\n", listTaskString);
                 }
                 catch (DongjiIndexOutOfBoundException e) {
                     markMessage = e.getMessage();
+
+                    this.addStringsToStringBuilder(printStringBuilder, markMessage);
                 }
 
-                this.addStringsToStringBuilder(printStringBuilder, markMessage, "\n", listTaskString);
+                
             } 
             else if (input.startsWith("unmark")) {
                 int index = this.parseIndex(input);
@@ -74,9 +78,13 @@ public class Dongji {
                 try {
                     unmarkMessage = this.unmark(index);
                     listTaskString = this.listTasks();
+
+                    this.addStringsToStringBuilder(printStringBuilder, unmarkMessage, "\n", listTaskString);
                 }
                 catch (DongjiIndexOutOfBoundException e) {
                     unmarkMessage = e.getMessage();
+
+                    this.addStringsToStringBuilder(printStringBuilder, unmarkMessage);
                 }
 
                 this.addStringsToStringBuilder(printStringBuilder, unmarkMessage, "\n", listTaskString);
