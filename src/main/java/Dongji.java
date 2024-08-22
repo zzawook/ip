@@ -55,15 +55,29 @@ public class Dongji {
             }
             else if (input.startsWith("mark")) {
                 int index = this.parseIndex(input);
-                String markMessage = this.mark(index);
-                String listTaskString = this.listTasks();
+                String markMessage = "";
+                String listTaskString = "";
+                try {
+                    markMessage = this.mark(index);
+                    listTaskString = this.listTasks();
+                }
+                catch (DongjiIndexOutOfBoundException e) {
+                    markMessage = e.getMessage();
+                }
 
                 this.addStringsToStringBuilder(printStringBuilder, markMessage, "\n", listTaskString);
             } 
             else if (input.startsWith("unmark")) {
                 int index = this.parseIndex(input);
-                String unmarkMessage = this.unmark(index);
-                String listTaskString = this.listTasks();
+                String unmarkMessage = "";
+                String listTaskString = "";
+                try {
+                    unmarkMessage = this.unmark(index);
+                    listTaskString = this.listTasks();
+                }
+                catch (DongjiIndexOutOfBoundException e) {
+                    unmarkMessage = e.getMessage();
+                }
 
                 this.addStringsToStringBuilder(printStringBuilder, unmarkMessage, "\n", listTaskString);
             } 
@@ -100,7 +114,7 @@ public class Dongji {
         if (index < 0 || index >= this.tasks.size()) {
             throw new DongjiIndexOutOfBoundException("Index out of bound! Please provide a valid index of task");
         }
-        
+
         Task deletedTask = this.tasks.remove(index);
         return "Noted. I've removed this task:\n" + deletedTask + "\nNow you have " + this.tasks.size()
                 + " tasks in the list.";
