@@ -1,7 +1,9 @@
 package components;
 
+import exceptions.DongjiEmptyTaskNameException;
+
 public class Todo extends Task {
-    public Todo(String name) {
+    public Todo(String name) throws DongjiEmptyTaskNameException {
         super(name);
     }
 

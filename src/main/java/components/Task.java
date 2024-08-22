@@ -1,10 +1,15 @@
 package components;
 
+import exceptions.DongjiEmptyTaskNameException;
+
 public abstract class Task {
     private String name;
     private boolean marked;
 
-    public Task(String name) {
+    public Task(String name) throws DongjiEmptyTaskNameException{
+        if (name.trim().length() == 0) {
+            throw new DongjiEmptyTaskNameException("task name cannot be empty!");
+        }
         this.name = name;
     }
 
@@ -14,6 +19,10 @@ public abstract class Task {
 
     public void unmark() {
         this.marked = false;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     private String generateMarkString() {

@@ -4,6 +4,10 @@ import components.Deadline;
 import components.Event;
 import components.Task;
 import components.Todo;
+import exceptions.DongjiEmptyTaskNameException;
+import exceptions.DongjiException;
+import exceptions.DongjiParseException;
+import exceptions.DongjiUnknownInstructionException;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -32,38 +36,50 @@ public class Dongji {
             StringBuilder printStringBuilder = new StringBuilder();
 
             if (input.equals("list")) {
-                printStringBuilder.append(this.listTasks());
+                String listTaskString = this.listTasks();
+
+                this.addStringsToStringBuilder(printStringBuilder, listTaskString);
             } 
             else if (input.startsWith("mark")) {
                 int index = this.parseIndex(input);
-                printStringBuilder.append(this.mark(index));
-                printStringBuilder.append("\n");
-                printStringBuilder.append(this.listTasks());
+                String markMessage = this.mark(index);
+                String listTaskString = this.listTasks();
+
+                this.addStringsToStringBuilder(printStringBuilder, markMessage, "\n", listTaskString);
             } 
             else if (input.startsWith("unmark")) {
                 int index = this.parseIndex(input);
-                printStringBuilder.append(this.unmark(index));
-                printStringBuilder.append("\n");
-                printStringBuilder.append(this.listTasks());
+                String unmarkMessage = this.unmark(index);
+                String listTaskString = this.listTasks();
+
+                this.addStringsToStringBuilder(printStringBuilder, unmarkMessage, "\n", listTaskString);
             } 
             else {
-                if (input.startsWith("todo")) {
-                    printStringBuilder.append(this.addTodo(input));
-                } else if (input.startsWith("event")) {
-                    printStringBuilder.append(this.addEvent(input));
-                } else if (input.startsWith("deadline")) {
-                    printStringBuilder.append(this.addDeadline(input));
-                }
+                try {
+                    if (input.startsWith("todo")) {
+                        String addTodoMessage = this.addTodo(input);
 
+                        this.addStringsToStringBuilder(printStringBuilder, addTodoMessage);
+                    } else if (input.startsWith("event")) {
+                        String addEventMessage = this.addEvent(input);
+
+                        this.addStringsToStringBuilder(printStringBuilder, addEventMessage);
+                    } else if (input.startsWith("deadline")) {
+                        String addDeadlineMessage = this.addDeadline(input);
+
+                        this.addStringsToStringBuilder(printStringBuilder, addDeadlineMessage);
+                    }
+                    else {
+                        throw new DongjiUnknownInstructionException("I'm sorry, but I don't know what that means :-(");
+                    }
+                } catch (DongjiException e) {
+                    printStringBuilder.append(e.getMessage());
+                }
             }
 
             this.print(printStringBuilder.toString());
             input = scanner.nextLine();
         }
-    }
-
-    private int parseIndex(String input) {
-        return Integer.parseInt(input.split(" ")[1]) - 1;
     }
 
     private String mark(int index) {
@@ -76,14 +92,32 @@ public class Dongji {
         return"Okay, I've marked this task as not done yet";
     }
 
-    private String addTodo(String input) {
+    private String addTodo(String input) throws DongjiEmptyTaskNameException {
         String todoName = input.substring(5).trim();
         Task task = new Todo(todoName);
         this.tasks.add(task);
         return "added: " + todoName;
     }
 
-    private String addEvent(String input) {
+    private String addEvent(String input) throws DongjiEmptyTaskNameException, DongjiParseException {
+        input = input.substring(6).trim();
+
+        if (! this.checkEventInputValid(input)) {
+            throw new DongjiParseException("Please provide both start and end date for the event");
+        }
+
+        Task task = this.parseInputToEvent(input);
+
+        this.tasks.add(task);
+
+        return "added: " + task.getName();
+    }
+
+    private boolean checkEventInputValid(String input) {
+        return input.contains("/from") && input.contains("/to");
+    }
+
+    private Event parseInputToEvent(String input) throws DongjiEmptyTaskNameException{
         String[] splitInput = input.split("/from");
 
         String eventName = splitInput[0].trim();
@@ -92,24 +126,34 @@ public class Dongji {
         String eventStart = splitDates[0].trim();
         String eventEnd = splitDates[1].trim();
 
-        Task task = new Event(eventName, eventStart, eventEnd);
-
-        this.tasks.add(task);
-
-        return "added: " + eventName;
+        return new Event(eventName, eventStart, eventEnd);
     }
 
-    private String addDeadline(String input) {
-        String[] splitted = input.split("/by");
+    private String addDeadline(String input) throws DongjiEmptyTaskNameException, DongjiParseException {
+        input = input.substring(8).trim();
 
-        String deadlineName = splitted[0].trim();
-        String deadline = splitted[1].trim();
+        if (! this.checkDeadlineInputValid(input)) {
+            throw new DongjiParseException("Please provide a deadline for the task");
+        }
 
-        Task task = new Deadline(deadlineName, deadline);
+        Task task = this.parseInputToDeadline(input);
 
         this.tasks.add(task);
 
-        return "added: " + deadlineName;
+        return "added: " + task.getName();
+    }
+
+    private boolean checkDeadlineInputValid(String input) {
+        return input.contains("/by");
+    }
+
+    private Deadline parseInputToDeadline(String input) throws DongjiEmptyTaskNameException {
+        String[] splitInput = input.split("/by");
+
+        String deadlineName = splitInput[0].trim();
+        String deadline = splitInput[1].trim();
+
+        return new Deadline(deadlineName, deadline);
     }
 
     private String listTasks() {
@@ -130,12 +174,18 @@ public class Dongji {
         System.out.println(this.wrapWithSeparator(str));
     }
 
-    // private void echo(String input) {
-    // System.out.println(this.wrapWithSeparator(input));
-    // }
-
     private String wrapWithSeparator(String input) {
         return SEPARATOR + "\n=> " + input + "\n" + SEPARATOR;
+    }
+
+    private int parseIndex(String input) {
+        return Integer.parseInt(input.split(" ")[1]) - 1;
+    }
+
+    private void addStringsToStringBuilder(StringBuilder sb, String... s) {
+        for (String str : s) {
+            sb.append(str);
+        }
     }
 
     private void greet() {
@@ -151,7 +201,6 @@ public class Dongji {
     }
 
     public static void main(String[] args) {
-        Dongji dongji = new Dongji();
+        new Dongji();
     }
-
 }

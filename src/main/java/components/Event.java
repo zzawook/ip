@@ -1,11 +1,13 @@
 package components;
 
+import exceptions.DongjiEmptyTaskNameException;
+
 public class Event extends Task {
 
     private String eventStart;
     private String eventEnd;
 
-    public Event(String name, String eventStart, String eventEnd) {
+    public Event(String name, String eventStart, String eventEnd) throws DongjiEmptyTaskNameException{
         super(name);
         this.eventStart = eventStart;
         this.eventEnd = eventEnd;
