@@ -135,7 +135,7 @@ public class Dongji {
         }
 
         this.tasks.get(index).unmark();
-        return"Okay, I've marked this task as not done yet";
+        return "Okay, I've marked this task as not done yet";
     }
 
     private String addTodo(String input) throws DongjiEmptyTaskNameException {
@@ -148,59 +148,21 @@ public class Dongji {
     private String addEvent(String input) throws DongjiEmptyTaskNameException, DongjiParseException {
         input = input.substring(6).trim();
 
-        if (! this.checkEventInputValid(input)) {
-            throw new DongjiParseException(
-                    "Start and end date not provided! Please provide both start and end date for the event");
-        }
-
-        Task task = this.parseInputToEvent(input);
+        Task task = Event.fromInputString(input);
 
         this.tasks.add(task);
 
         return "added: " + task.getName();
-    }
-
-    private boolean checkEventInputValid(String input) {
-        return input.contains("/from") && input.contains("/to");
-    }
-
-    private Event parseInputToEvent(String input) throws DongjiEmptyTaskNameException{
-        String[] splitInput = input.split("/from");
-
-        String eventName = splitInput[0].trim();
-
-        String[] splitDates = splitInput[1].split("/to");
-        String eventStart = splitDates[0].trim();
-        String eventEnd = splitDates[1].trim();
-
-        return new Event(eventName, eventStart, eventEnd);
     }
 
     private String addDeadline(String input) throws DongjiEmptyTaskNameException, DongjiParseException {
         input = input.substring(8).trim();
 
-        if (! this.checkDeadlineInputValid(input)) {
-            throw new DongjiParseException("Please provide a deadline for the task");
-        }
-
-        Task task = this.parseInputToDeadline(input);
+        Task task = Deadline.fromInputString(input);
 
         this.tasks.add(task);
 
         return "added: " + task.getName();
-    }
-
-    private boolean checkDeadlineInputValid(String input) {
-        return input.contains("/by");
-    }
-
-    private Deadline parseInputToDeadline(String input) throws DongjiEmptyTaskNameException {
-        String[] splitInput = input.split("/by");
-
-        String deadlineName = splitInput[0].trim();
-        String deadline = splitInput[1].trim();
-
-        return new Deadline(deadlineName, deadline);
     }
 
     private String listTasks() {
