@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
+import components.Deadline;
+import components.Event;
 import components.Task;
+import components.Todo;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -44,7 +47,14 @@ public class Dongji {
                 printStringBuilder.append(this.listTasks());
             } 
             else {
-                printStringBuilder.append(this.addTask(input));
+                if (input.startsWith("todo")) {
+                    printStringBuilder.append(this.addTodo(input));
+                } else if (input.startsWith("event")) {
+                    printStringBuilder.append(this.addEvent(input));
+                } else if (input.startsWith("deadline")) {
+                    printStringBuilder.append(this.addDeadline(input));
+                }
+
             }
 
             this.print(printStringBuilder.toString());
@@ -66,10 +76,40 @@ public class Dongji {
         return"Okay, I've marked this task as not done yet";
     }
 
-    private String addTask(String taskName) {
-        Task task = new Task(taskName);
+    private String addTodo(String input) {
+        String todoName = input.substring(5).trim();
+        Task task = new Todo(todoName);
         this.tasks.add(task);
-        return "added: " + taskName;
+        return "added: " + todoName;
+    }
+
+    private String addEvent(String input) {
+        String[] splitInput = input.split("/from");
+
+        String eventName = splitInput[0].trim();
+
+        String[] splitDates = splitInput[1].split("/to");
+        String eventStart = splitDates[0].trim();
+        String eventEnd = splitDates[1].trim();
+
+        Task task = new Event(eventName, eventStart, eventEnd);
+
+        this.tasks.add(task);
+
+        return "added: " + eventName;
+    }
+
+    private String addDeadline(String input) {
+        String[] splitted = input.split("/by");
+
+        String deadlineName = splitted[0].trim();
+        String deadline = splitted[1].trim();
+
+        Task task = new Deadline(deadlineName, deadline);
+
+        this.tasks.add(task);
+
+        return "added: " + deadlineName;
     }
 
     private String listTasks() {
