@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class DateTimeData {
+public class DateTimeData implements Comparable<DateTimeData> {
     private LocalDateTime dateTime;
     private boolean hasTime;
 
@@ -19,6 +19,10 @@ public class DateTimeData {
 
     public boolean getHasTime() {
         return this.hasTime;
+    }
+
+    public int compareTo(DateTimeData other) {
+        return this.dateTime.compareTo(other.getDateTime());
     }
 
     public static boolean isDateTime(String input) {

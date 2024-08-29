@@ -53,6 +53,10 @@ public class CommandParser {
             eventStartDate = this.extractEventStartDate(commandString);
             eventEndDate = this.extractEventEndDate(commandString);
 
+            if (isEventEndEarlierThanStart(eventStartDate, eventEndDate)) {
+                throw new DongjiParseException("Event end date is earlier than start date. Please provide a valid dates");
+            }
+
             return new EventCommand(this.taskList, taskName, eventStartDate, eventEndDate);
         case "deadline":
             if (!isCommandStringValidDeadline(commandString)) {
@@ -67,6 +71,9 @@ public class CommandParser {
         }
     }
     
+    private boolean isEventEndEarlierThanStart(DateTimeData startDate, DateTimeData endDate) {
+        return startDate.compareTo(endDate) > 0;
+    }
 
     private boolean isCommandStringValidEvent(String commandString) {
         return (commandString.contains("/from") && commandString.contains("/to"));

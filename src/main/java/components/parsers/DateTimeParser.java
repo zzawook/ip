@@ -12,7 +12,6 @@ public class DateTimeParser {
         if (! hasTime) {
             input += " 0000";
         }
-        System.out.println(input);
         return new DateTimeData(LocalDateTime.parse(input, DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")), hasTime);
     }
 }

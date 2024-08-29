@@ -92,10 +92,6 @@ public class Txt implements Persistence {
         String taskType = taskRecordParts[0];
         boolean isMarked = taskRecordParts[1].equals("1");
         String taskName = taskRecordParts[2];
-        System.out.println(taskRecord);
-        for (String s : taskRecordParts) {
-            System.out.println(s);
-        }
 
         Task task = null;
         try {
