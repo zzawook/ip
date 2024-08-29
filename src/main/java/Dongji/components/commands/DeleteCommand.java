@@ -13,6 +13,10 @@ public class DeleteCommand implements Command {
         this.index = index;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String execute() {
         Task deletedTask;

@@ -13,6 +13,10 @@ public class MarkCommand implements Command {
         this.index = index;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String execute() {
         try {

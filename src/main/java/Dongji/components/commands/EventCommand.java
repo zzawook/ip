@@ -20,6 +20,10 @@ public class EventCommand implements Command {
         this.endDate = endDate;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String execute() {
         Task addedEvent;

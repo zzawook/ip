@@ -14,10 +14,22 @@ public class Event extends Task {
         this.eventEnd = eventEnd;
     }
 
+    
+    /** 
+     * Returns the DateTimeDate object that represents start date of the event.
+     * 
+     * @return DateTimeData
+     */
     public DateTimeData getEventStart() {
         return this.eventStart;
     }
 
+    
+    /** 
+     * Returns the DateTimeDate object that represents end date of the event.
+     * 
+     * @return DateTimeData
+     */
     public DateTimeData getEventEnd() {
         return this.eventEnd;
     }

@@ -12,6 +12,12 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
+    
+    /** 
+     * Returns the deadline of the task.
+     * 
+     * @return DateTimeData
+     */
     public DateTimeData getDeadline() {
         return this.deadline;
     }

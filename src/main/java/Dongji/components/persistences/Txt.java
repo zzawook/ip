@@ -24,6 +24,12 @@ public class Txt implements Persistence {
         this.taskList = taskList;
     }
 
+    /** 
+     * Exports currently saved tasks to a txt file. 
+     * If the file does not exist, it will create a new file
+     * 
+     * @return TaskList
+     */
     @Override
     public void exportTasks() {
         File dongjiFile = new File(FILE_NAME);
@@ -63,6 +69,14 @@ public class Txt implements Persistence {
         }
     }
 
+    
+    /** 
+     * Imports tasks from a txt file after checking if the file exists. 
+     * If the file does not exist, it will return an empty task list
+     * 
+     * @return TaskList
+     */
+    @Override
     public TaskList importTasks() {
         File dongjiFile = new File(FILE_NAME);
         if (! dongjiFile.exists()) {

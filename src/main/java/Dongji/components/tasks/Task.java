@@ -13,18 +13,31 @@ public abstract class Task {
         this.name = name;
     }
 
+    /**
+     * Marks the task as done.
+     */
     public void mark() {
         this.isMarked = true;
     }
 
+    /**
+     * Unmarks the task as not done.
+     */
     public void unmark() {
         this.isMarked = false;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return this.name;
     }
-
+    
+    /** 
+     * @return boolean
+     */
     public boolean getIsMarked() {
         return this.isMarked;
     }

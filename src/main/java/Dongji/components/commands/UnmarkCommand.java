@@ -14,6 +14,10 @@ public class UnmarkCommand implements Command {
         this.index = index;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String execute() {
         try {

@@ -22,6 +22,15 @@ public class CommandParser {
         this.taskList = taskList;
     }
 
+    
+    /** 
+     * Parses the command string into a corresponding Command object
+     * 
+     * @param commandString
+     * @return Command
+     * @throws DongjiUnknownInstructionException
+     * @throws DongjiParseException
+     */
     public Command parseToCommand(String commandString) throws DongjiUnknownInstructionException, DongjiParseException {
         String command = commandString.split(" ")[0];
 
