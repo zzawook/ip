@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import exceptions.DongjiEmptyTaskNameException;
 import exceptions.DongjiIndexOutOfBoundException;
-import exceptions.DongjiParseException;
 
 public class TaskList {
     
@@ -59,32 +57,6 @@ public class TaskList {
 
     public Task add(Task task) {
         this.taskList.add(task);
-        return task;
-    }
-
-    public Task addTodo(String input) throws DongjiEmptyTaskNameException {
-        String todoName = input.substring(5).trim();
-        Task task = new Todo(todoName);
-        this.taskList.add(task);
-        return task;
-    }
-
-    public Task addEvent(String input) throws DongjiEmptyTaskNameException, DongjiParseException {
-        input = input.substring(6).trim();
-
-        Task task = Event.fromInputString(input);
-
-        this.taskList.add(task);
-        return task;
-    }
-
-    public Task addDeadline(String input) throws DongjiEmptyTaskNameException, DongjiParseException {
-        input = input.substring(8).trim();
-
-        Task task = Deadline.fromInputString(input);
-
-        this.taskList.add(task);
-
         return task;
     }
 

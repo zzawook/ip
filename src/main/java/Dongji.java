@@ -1,12 +1,13 @@
 import java.util.Scanner;
 
-import components.Parser;
 import components.commands.Command;
+import components.parsers.CommandParser;
 import components.persistences.Persistence;
 import components.persistences.Txt;
 import components.tasks.TaskList;
 import components.ui.CommandLine;
 import components.ui.Ui;
+import exceptions.DongjiParseException;
 import exceptions.DongjiUnknownInstructionException;
 
 public class Dongji {
@@ -35,7 +36,7 @@ public class Dongji {
 
     private void executeApplication() {
         String input = this.scanner.nextLine();
-        Parser parser = new Parser(this.taskList);
+        CommandParser parser = new CommandParser(this.taskList);
 
         while (!input.equals("bye")) {
             Command currentCommand = null;
@@ -43,6 +44,11 @@ public class Dongji {
                 currentCommand = parser.parseToCommand(input);
             }
             catch(DongjiUnknownInstructionException e) {
+                ui.show(e.getMessage());
+                input = scanner.nextLine();
+                continue;
+            }
+            catch(DongjiParseException e) {
                 ui.show(e.getMessage());
                 input = scanner.nextLine();
                 continue;

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import components.DateTimeData;
+import components.parsers.DateTimeParser;
 import components.tasks.Deadline;
 import components.tasks.Event;
 import components.tasks.Task;
@@ -38,7 +40,7 @@ public class Txt implements Persistence {
             writer = new FileWriter(FILE_NAME);
         }
         catch(IOException e) {
-            System.out.println("Error writing to file: " + e.getMessage());
+            System.out.println("Error opening file writer: " + e.getMessage());
         }
 
         Iterator<Task> taskListIterator = taskList.iterator();
@@ -86,20 +88,25 @@ public class Txt implements Persistence {
     }
 
     private Task convertTxtRecordToTask(String taskRecord) {
-        String[] taskRecordParts = taskRecord.split(" | ");
+        String[] taskRecordParts = taskRecord.split(" \\| ");
         String taskType = taskRecordParts[0];
         boolean isMarked = taskRecordParts[1].equals("1");
         String taskName = taskRecordParts[2];
+        System.out.println(taskRecord);
+        for (String s : taskRecordParts) {
+            System.out.println(s);
+        }
 
         Task task = null;
         try {
             if (taskType.equals("T")) {
                 task = new Todo(taskName);
             } else if (taskType.equals("D")) {
-                task = new Deadline(taskName, taskRecordParts[3]);
+                DateTimeData deadline = DateTimeParser.extractDateTime(taskRecordParts[3]);
+                task = new Deadline(taskName, deadline);
             } else if (taskType.equals("E")) {
-                String[] eventParts = taskRecordParts[3].split("-");
-                task = new Event(taskName, eventParts[0], eventParts[1]);
+                String[] eventParts = taskRecordParts[3].split("~");
+                task = new Event(taskName, DateTimeParser.extractDateTime(eventParts[0]), DateTimeParser.extractDateTime(eventParts[1]));
             }
         }
         catch(DongjiEmptyTaskNameException e) {
@@ -129,9 +136,9 @@ public class Txt implements Persistence {
         sb.append(task.getName());
 
         if (task instanceof Deadline) {
-            sb.append(" | " + ((Deadline) task).getDeadline());
+            sb.append(" | " + DateTimeData.formatDate(((Deadline) task).getDeadline()));
         } else if (task instanceof Event) {
-            sb.append(" | " + ((Event) task).getEventStart() + "-" + ((Event) task).getEventEnd());
+            sb.append(" | " + DateTimeData.formatDate(((Event) task).getEventStart()) + "~" + DateTimeData.formatDate(((Event) task).getEventEnd()));
         }
 
         return sb.toString();

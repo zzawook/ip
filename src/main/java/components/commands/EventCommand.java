@@ -1,5 +1,6 @@
 package components.commands;
 
+import components.DateTimeData;
 import components.tasks.Event;
 import components.tasks.Task;
 import components.tasks.TaskList;
@@ -9,10 +10,10 @@ public class EventCommand implements Command {
     
     private TaskList taskList;
     private String taskName;
-    private String startDate;
-    private String endDate;
+    private DateTimeData startDate;
+    private DateTimeData endDate;
 
-    public EventCommand(TaskList taskList, String taskName, String startDate, String endDate) {
+    public EventCommand(TaskList taskList, String taskName, DateTimeData startDate, DateTimeData endDate) {
         this.taskList = taskList;
         this.taskName = taskName;
         this.startDate = startDate;
