@@ -88,7 +88,8 @@ public class CommandParser {
     }
 
     private String extractTaskName(String commandString) {
-        return commandString.split(" ")[1];
+        String afterCommand = commandString.split(" ", 2)[1];
+        return afterCommand.split(" /", 2)[0];
     }
 
     private DateTimeData extractDeadline(String commandString) throws DongjiParseException {
