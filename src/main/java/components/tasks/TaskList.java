@@ -1,4 +1,4 @@
-package components;
+package components.tasks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,13 @@ public class TaskList {
 
     public int size() {
         return this.taskList.size();
+    }
+
+    public Task get(int index) throws DongjiIndexOutOfBoundException{
+        if (index < 0 || index >= this.taskList.size()) {
+            throw new DongjiIndexOutOfBoundException("Index out of bound! Please provide a valid index of task");
+        }
+        return this.taskList.get(index);
     }
 
     public Task deleteTask(int index) throws DongjiIndexOutOfBoundException {
@@ -43,6 +50,11 @@ public class TaskList {
         }
 
         this.taskList.get(index).unmark();
+    }
+
+    public Task add(Task task) {
+        this.taskList.add(task);
+        return task;
     }
 
     public Task addTodo(String input) throws DongjiEmptyTaskNameException {

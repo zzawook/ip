@@ -1,4 +1,4 @@
-package components;
+package components.tasks;
 
 import exceptions.DongjiEmptyTaskNameException;
 
