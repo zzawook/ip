@@ -1,6 +1,7 @@
 package components.tasks;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import exceptions.DongjiEmptyTaskNameException;
@@ -17,6 +18,10 @@ public class TaskList {
 
     public int size() {
         return this.taskList.size();
+    }
+
+    public Iterator<Task> iterator() {
+        return this.taskList.iterator();
     }
 
     public Task get(int index) throws DongjiIndexOutOfBoundException{

@@ -1,9 +1,12 @@
 import java.util.Scanner;
 
 import components.Parser;
-import components.Ui;
 import components.commands.Command;
+import components.persistences.Persistence;
+import components.persistences.Txt;
 import components.tasks.TaskList;
+import components.ui.CommandLine;
+import components.ui.Ui;
 import exceptions.DongjiUnknownInstructionException;
 
 public class Dongji {
@@ -11,17 +14,21 @@ public class Dongji {
 
     private Scanner scanner;
     private TaskList taskList;
+    private Persistence persistence;
     private Ui ui;
 
     public Dongji() {
-        this.ui = new Ui();
+        this.ui = new CommandLine();
+        this.taskList = new TaskList();
+        this.persistence = new Txt(taskList);
+        this.persistence.importTasks();
         ui.showWelcome();
 
         this.scanner = new Scanner(System.in);
-        this.taskList = new TaskList();
 
         executeApplication();
         scanner.close();
+        this.persistence.exportTasks();
 
         this.ui.showGoodbye();
     }

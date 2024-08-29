@@ -22,6 +22,14 @@ public class Event extends Task {
         return parseInputToEvent(input);
     }
 
+    public String getEventStart() {
+        return this.eventStart;
+    }
+
+    public String getEventEnd() {
+        return this.eventEnd;
+    }
+    
     private static boolean checkEventInputValid(String input) {
         return input.contains("/from") && input.contains("/to");
     }

@@ -4,7 +4,7 @@ import exceptions.DongjiEmptyTaskNameException;
 
 public abstract class Task {
     private String name;
-    private boolean marked;
+    private boolean isMarked;
 
     public Task(String name) throws DongjiEmptyTaskNameException{
         if (name.trim().length() == 0) {
@@ -14,19 +14,23 @@ public abstract class Task {
     }
 
     public void mark() {
-        this.marked = true;
+        this.isMarked = true;
     }
 
     public void unmark() {
-        this.marked = false;
+        this.isMarked = false;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public boolean getIsMarked() {
+        return this.isMarked;
+    }
+
     private String generateMarkString() {
-        return this.marked ? "[X] " : "[ ] ";
+        return this.isMarked ? "[X] " : "[ ] ";
     }
 
     public String toString() {

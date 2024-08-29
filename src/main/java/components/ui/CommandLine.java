@@ -1,13 +1,9 @@
-package components;
+package components.ui;
 
-public class Ui {
-
+public class CommandLine implements Ui {
     private final String SEPARATOR = "-------------------------------";
-    
-    public Ui() {
 
-    }
-
+    @Override
     public void show(String str) {
         System.out.println(this.wrapWithSeparator(str));
     }
@@ -16,11 +12,13 @@ public class Ui {
         return SEPARATOR + "\n=> " + input + "\n" + SEPARATOR;
     }
 
+    @Override
     public void showWelcome() {
         System.out.println("Hello! I'm Dongji");
         System.out.println("What can I do for you?");
     }
 
+    @Override
     public void showGoodbye() {
         System.out.println("Bye. Hope to see you again soon!");
     }

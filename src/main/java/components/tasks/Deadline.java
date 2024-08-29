@@ -19,6 +19,10 @@ public class Deadline extends Task {
         return parseInputToDeadline(input);
     }
 
+    public String getDeadline() {
+        return this.deadline;
+    }
+
     private static boolean checkDeadlineInputValid(String input) {
         return input.contains("/by");
     }
