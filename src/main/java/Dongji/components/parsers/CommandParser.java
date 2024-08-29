@@ -7,6 +7,7 @@ import Dongji.components.commands.Command;
 import Dongji.components.commands.DeadlineCommand;
 import Dongji.components.commands.DeleteCommand;
 import Dongji.components.commands.EventCommand;
+import Dongji.components.commands.FindCommand;
 import Dongji.components.commands.ListCommand;
 import Dongji.components.commands.MarkCommand;
 import Dongji.components.commands.TodoCommand;
@@ -46,6 +47,9 @@ public class CommandParser {
         case "unmark":
             int unmarkIndex = this.parseIndex(commandString);
             return new UnmarkCommand(this.taskList, unmarkIndex);
+        case "find":
+            String keyword = this.parseKeyword(commandString);
+            return new FindCommand(this.taskList, keyword);
         case "todo":
             String taskName = this.extractTaskName(commandString);
             return new TodoCommand(this.taskList, taskName);
@@ -76,7 +80,7 @@ public class CommandParser {
             DateTimeData deadlineDate = this.extractDeadline(commandString);
             return new DeadlineCommand(this.taskList, taskName, deadlineDate);
         default:
-            return null;
+            throw new DongjiUnknownInstructionException("Unknown instruction! Please provide a valid instruction");
         }
     }
     
@@ -94,6 +98,10 @@ public class CommandParser {
 
     private int parseIndex(String commandString) {
         return Integer.parseInt(commandString.split(" ")[1]) - 1;
+    }
+
+    private String parseKeyword(String commandString) {
+        return commandString.split(" ", 2)[1];
     }
 
     private String extractTaskName(String commandString) {
