@@ -12,21 +12,26 @@ import javafx.stage.Stage;
 /**
  * A GUI for Duke using FXML.
  */
-public class Main extends Application {
+public class UiMain extends Application {
 
-    private Dongji duke = new Dongji();
+    private Dongji dongji = new Dongji();
 
     @Override
     public void start(Stage stage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(UiMain.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setDuke(duke);  // inject the Duke instance
+            fxmlLoader.<MainWindow>getController().setDongji(dongji);  // inject the Duke instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void stop() {
+        dongji.terminate();
     }
 }

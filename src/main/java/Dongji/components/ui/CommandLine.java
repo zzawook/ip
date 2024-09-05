@@ -1,14 +1,39 @@
 package Dongji.components.ui;
 
-public class CommandLine implements Ui {
-    private final String SEPARATOR = "-------------------------------";
+import java.util.Scanner;
 
+import Dongji.Dongji;
+
+public class CommandLine {
+    private final String SEPARATOR = "-------------------------------";
+    private Scanner scanner;
+    private Dongji dongji;
+
+    public CommandLine() {
+        this.scanner = new Scanner(System.in);
+        this.dongji = new Dongji();
+    }
+
+    public String readInput() {
+        return scanner.nextLine();
+    }
+
+    public void launch() {
+        showWelcome();
+        String input = readInput();
+        while (!input.equals("bye")) {
+            this.show(dongji.getResponse(input));
+            input = readInput();
+        }
+        showGoodbye();
+        dongji.terminate();
+        close();
+    }
     
     /** 
      * @param str
      */
-    @Override
-    public void show(String str) {
+    private void show(String str) {
         System.out.println(this.wrapWithSeparator(str));
     }
 
@@ -19,8 +44,7 @@ public class CommandLine implements Ui {
     /** 
      * Prints welcome message
      */
-    @Override
-    public void showWelcome() {
+    private void showWelcome() {
         System.out.println("Hello! I'm Dongji");
         System.out.println("What can I do for you?");
     }
@@ -28,8 +52,11 @@ public class CommandLine implements Ui {
     /** 
      * Prints good bye message
      */
-    @Override
-    public void showGoodbye() {
+    private void showGoodbye() {
         System.out.println("Bye. Hope to see you again soon!");
+    }
+
+    private void close() {
+        scanner.close();
     }
 }

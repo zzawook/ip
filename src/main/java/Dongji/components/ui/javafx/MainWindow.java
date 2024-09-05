@@ -31,8 +31,8 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
-    public void setDuke(Dongji d) {
+    /** Injects the Dongji instance */
+    public void setDongji(Dongji d) {
         dongji = d;
     }
 
@@ -46,7 +46,7 @@ public class MainWindow extends AnchorPane {
         String response = dongji.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getDongji(response, dukeImage)
         );
         userInput.clear();
     }
