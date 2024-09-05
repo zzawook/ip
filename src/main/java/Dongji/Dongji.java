@@ -20,22 +20,25 @@ public class Dongji {
     private Ui ui;
 
     public Dongji() {
+        this.initialize();
+    }
+
+    private void initialize() {
         this.ui = new CommandLine();
         this.taskList = new TaskList();
         this.persistence = new Txt(taskList);
         this.persistence.importTasks();
-        ui.showWelcome();
+    }
 
-        this.scanner = new Scanner(System.in);
-
-        executeApplication();
-        scanner.close();
+    private void terminate() {
         this.persistence.exportTasks();
-
-        this.ui.showGoodbye();
     }
 
     private void executeApplication() {
+        ui.showWelcome();
+
+        this.scanner = new Scanner(System.in);
+        
         String input = this.scanner.nextLine();
         CommandParser parser = new CommandParser(this.taskList);
 
@@ -59,9 +62,19 @@ public class Dongji {
             
             input = scanner.nextLine();
         }
+        scanner.close();
+        this.ui.showGoodbye();
+    }
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        return "Duke heard: " + input;
     }
 
     public static void main(String[] args) {
-        new Dongji();
+        Dongji dongji = new Dongji();
+        dongji.executeApplication();
     }
 }
