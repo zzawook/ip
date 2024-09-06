@@ -45,7 +45,7 @@ public class Txt implements Persistence {
         try {
             writer = new FileWriter(FILE_NAME);
         }
-        catch(IOException e) {
+        catch (IOException e) {
             System.out.println("Error opening file writer: " + e.getMessage());
         }
 
@@ -56,7 +56,7 @@ public class Txt implements Persistence {
                 writer.write(convertTaskToTxtRecord(taskListIterator.next()) + "\n");
             }
         }
-        catch(IOException e) {
+        catch (IOException e) {
             System.out.println("Error writing to file: " + e.getMessage());
         }
 
@@ -64,7 +64,7 @@ public class Txt implements Persistence {
             writer.close();
             System.out.println("Tasks saved successfully. You have " + taskList.size() + " tasks in your list");
         }
-        catch(IOException e) {
+        catch (IOException e) {
             System.out.println("Error closing file: " + e.getMessage());
         }
     }
