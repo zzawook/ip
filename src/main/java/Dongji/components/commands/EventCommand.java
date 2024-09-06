@@ -22,6 +22,8 @@ public class EventCommand implements Command {
 
     
     /** 
+     * Creates Event task with task name, start date and end date provided from constructor
+     * 
      * @return String
      */
     @Override

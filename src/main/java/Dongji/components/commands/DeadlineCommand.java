@@ -20,6 +20,8 @@ public class DeadlineCommand implements Command {
 
     
     /** 
+     * Creates a new Deadline task with task name and deadline date provided from constructor
+     * 
      * @return String
      */
     @Override

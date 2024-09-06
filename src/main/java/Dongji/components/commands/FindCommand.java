@@ -14,6 +14,8 @@ public class FindCommand implements Command {
     }
 
     /**
+     * Finds tasks that contain the keyword provided from the constructor
+     * 
      * @return String
      */
     @Override

@@ -15,6 +15,8 @@ public class MarkCommand implements Command {
 
     
     /** 
+     * Marks the task at the index provided from the constructor
+     * 
      * @return String
      */
     @Override

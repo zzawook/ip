@@ -10,12 +10,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * A GUI for Duke using FXML.
+ * A GUI for Dongji using FXML.
  */
 public class UiMain extends Application {
 
     private Dongji dongji = new Dongji();
 
+    
+    /** 
+     * @param stage
+     */
     @Override
     public void start(Stage stage) {
         try {
@@ -23,7 +27,7 @@ public class UiMain extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setDongji(dongji);  // inject the Duke instance
+            fxmlLoader.<MainWindow>getController().setDongji(dongji);  // inject the Dongji instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

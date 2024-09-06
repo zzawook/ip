@@ -14,10 +14,19 @@ public class CommandLine {
         this.dongji = new Dongji();
     }
 
+    
+    /** 
+     * Reads the user input from the command line and returns it as a String
+     * 
+     * @return String
+     */
     public String readInput() {
         return scanner.nextLine();
     }
 
+    /**
+     * Launches the command line interface for Dongji
+     */
     public void launch() {
         showWelcome();
         String input = readInput();
@@ -31,6 +40,8 @@ public class CommandLine {
     }
     
     /** 
+     * Prints the given String str after wrapping with separator
+     * 
      * @param str
      */
     private void show(String str) {

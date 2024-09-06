@@ -15,6 +15,8 @@ public class DeleteCommand implements Command {
 
     
     /** 
+     * Deletes the task at the index provided from the constructor
+     * 
      * @return String
      */
     @Override

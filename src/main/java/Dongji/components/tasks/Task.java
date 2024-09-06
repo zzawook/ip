@@ -38,7 +38,7 @@ public abstract class Task {
     /** 
      * @return boolean
      */
-    public boolean getIsMarked() {
+    public boolean isMarked() {
         return this.isMarked;
     }
 

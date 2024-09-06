@@ -11,6 +11,8 @@ public class ListCommand implements Command {
 
     
     /** 
+     * Lists all tasks in the task list
+     * 
      * @return String
      */
     @Override

@@ -16,6 +16,8 @@ public class UnmarkCommand implements Command {
 
     
     /** 
+     * Unmarks the task at the index provided from the constructor
+     * 
      * @return String
      */
     @Override

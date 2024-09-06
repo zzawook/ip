@@ -28,7 +28,7 @@ public class DateTimeData implements Comparable<DateTimeData> {
      * 
      * @return boolean
      */
-    public boolean getHasTime() {
+    public boolean hasTime() {
         return this.hasTime;
     }
 
@@ -81,7 +81,7 @@ public class DateTimeData implements Comparable<DateTimeData> {
      * @return String
      */
     public static String formatDate(DateTimeData dateTimeData) {
-        if (dateTimeData.getHasTime()) {
+        if (dateTimeData.hasTime()) {
             return dateTimeData.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
         } else {
             return dateTimeData.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));

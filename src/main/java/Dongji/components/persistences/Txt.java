@@ -141,7 +141,7 @@ public class Txt implements Persistence {
             sb.append("E | ");
         }
 
-        sb.append(task.getIsMarked() ? "1 | " : "0 | ");
+        sb.append(task.isMarked() ? "1 | " : "0 | ");
 
         sb.append(task.getName());
 
