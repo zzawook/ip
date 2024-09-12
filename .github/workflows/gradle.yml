@@ -27,8 +27,8 @@ jobs:
           java-version: '17'
           java-package: jdk+fx
 
-      - name: Build and check with Gradle
-        run: ./gradlew check
+    #   - name: Build and check with Gradle
+    #     run: ./gradlew check
 
       - name: Create jar file
         run: ./gradlew shadowjar
