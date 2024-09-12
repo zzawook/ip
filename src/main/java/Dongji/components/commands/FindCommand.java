@@ -1,5 +1,8 @@
 package Dongji.components.commands;
 
+import java.util.List;
+
+import Dongji.components.tasks.Task;
 import Dongji.components.tasks.TaskList;
 import Dongji.exceptions.DongjiIndexOutOfBoundException;
 
@@ -25,15 +28,12 @@ public class FindCommand implements Command {
 
         int taskIndex = 1;
 
-        try {
-            for (int i = 0; i < this.taskList.size(); i++) {
-                if (this.taskList.get(i).getName().contains(this.keyword)) {
-                    sb.append(taskIndex + ". " + this.taskList.get(i).toString() + "\n");
-                    taskIndex++;
-                }
-            }
-        } catch (DongjiIndexOutOfBoundException e) {
-            return e.getMessage();
+        List<Task> filteredTaskList = this.taskList.stream().filter(task -> task.getName().contains(this.keyword))
+                .toList();
+
+        for (int i = 0; i < filteredTaskList.size(); i++) {
+            sb.append(taskIndex + ". " + filteredTaskList.get(i).toString() + "\n");
+            taskIndex++;
         }
 
         return sb.toString();

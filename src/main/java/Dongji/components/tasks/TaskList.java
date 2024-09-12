@@ -3,6 +3,7 @@ package Dongji.components.tasks;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import Dongji.exceptions.DongjiIndexOutOfBoundException;
 
@@ -117,6 +118,10 @@ public class TaskList {
         return task;
     }
 
+    public Stream<Task> stream() {
+        return this.taskList.stream();
+    }
+
     
     /** 
      * Returns a string representation of the task list
@@ -126,14 +131,8 @@ public class TaskList {
     public String listTasks() {
         StringBuilder sb = new StringBuilder();
         sb.append("\n");
-
-        for (int i = 0; i < this.taskList.size(); i++) {
-            sb.append((i + 1) + ". " + this.taskList.get(i));
-            if (i != this.taskList.size() - 1) {
-                sb.append("\n");
-            }
-        }
-
+        this.taskList.stream().forEach(task -> sb.append(task.toString() + "\n"));
+        sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
 }
