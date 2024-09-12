@@ -1,12 +1,12 @@
-package Dongji;
+package dongji;
 
-import Dongji.components.commands.Command;
-import Dongji.components.parsers.CommandParser;
-import Dongji.components.persistences.Persistence;
-import Dongji.components.persistences.Txt;
-import Dongji.components.tasks.TaskList;
-import Dongji.exceptions.DongjiParseException;
-import Dongji.exceptions.DongjiUnknownInstructionException;
+import dongji.components.commands.Command;
+import dongji.components.parsers.CommandParser;
+import dongji.components.persistences.Persistence;
+import dongji.components.persistences.Txt;
+import dongji.components.tasks.TaskList;
+import dongji.exceptions.DongjiParseException;
+import dongji.exceptions.DongjiUnknownInstructionException;
 
 /**
  * Dongji backend application that processed commands and returns responses.
@@ -16,7 +16,6 @@ public class Dongji {
     private TaskList taskList;
     private Persistence persistence;
 
-    
     public Dongji() {
         this.taskList = new TaskList();
         this.persistence = new Txt(taskList);
@@ -37,11 +36,9 @@ public class Dongji {
         try {
             currentCommand = parser.parseToCommand(input);
             return currentCommand.execute();
-        }
-        catch(DongjiUnknownInstructionException e) {
+        } catch (DongjiUnknownInstructionException e) {
             return e.getMessage();
-        }
-        catch(DongjiParseException e) {
+        } catch (DongjiParseException e) {
             return e.getMessage();
         }
     }

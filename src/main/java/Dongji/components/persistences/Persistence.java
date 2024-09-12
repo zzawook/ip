@@ -1,6 +1,6 @@
-package Dongji.components.persistences;
+package dongji.components.persistences;
 
-import Dongji.components.tasks.TaskList;
+import dongji.components.tasks.TaskList;
 
 public interface Persistence {
     public void exportTasks();

@@ -1,4 +1,4 @@
-package Dongji.components.persistences;
+package dongji.components.persistences;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import Dongji.components.DateTimeData;
-import Dongji.components.parsers.DateTimeParser;
-import Dongji.components.tasks.Deadline;
-import Dongji.components.tasks.Event;
-import Dongji.components.tasks.Task;
-import Dongji.components.tasks.TaskList;
-import Dongji.components.tasks.Todo;
-import Dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.components.DateTimeData;
+import dongji.components.parsers.DateTimeParser;
+import dongji.components.tasks.Deadline;
+import dongji.components.tasks.Event;
+import dongji.components.tasks.Task;
+import dongji.components.tasks.TaskList;
+import dongji.components.tasks.Todo;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public class Txt implements Persistence {
 
@@ -24,16 +24,16 @@ public class Txt implements Persistence {
         this.taskList = taskList;
     }
 
-    /** 
-     * Exports currently saved tasks to a txt file. 
-     * If the file does not exist, it will create a new file
+    /**
+     * Exports currently saved tasks to a txt file. If the file does not exist, it
+     * will create a new file
      * 
      * @return TaskList
      */
     @Override
     public void exportTasks() {
         File dongjiFile = new File(FILE_NAME);
-        if (! dongjiFile.exists()) {
+        if (!dongjiFile.exists()) {
             try {
                 dongjiFile.createNewFile();
             } catch (IOException e) {
@@ -44,8 +44,7 @@ public class Txt implements Persistence {
         FileWriter writer = null;
         try {
             writer = new FileWriter(FILE_NAME);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Error opening file writer: " + e.getMessage());
         }
 
@@ -55,31 +54,28 @@ public class Txt implements Persistence {
             while (taskListIterator.hasNext()) {
                 writer.write(convertTaskToTxtRecord(taskListIterator.next()) + "\n");
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Error writing to file: " + e.getMessage());
         }
 
         try {
             writer.close();
             System.out.println("Tasks saved successfully. You have " + taskList.size() + " tasks in your list");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Error closing file: " + e.getMessage());
         }
     }
 
-    
-    /** 
-     * Imports tasks from a txt file after checking if the file exists. 
-     * If the file does not exist, it will return an empty task list
+    /**
+     * Imports tasks from a txt file after checking if the file exists. If the file
+     * does not exist, it will return an empty task list
      * 
      * @return TaskList
      */
     @Override
     public TaskList importTasks() {
         File dongjiFile = new File(FILE_NAME);
-        if (! dongjiFile.exists()) {
+        if (!dongjiFile.exists()) {
             System.out.println("No saved tasks found. Starting with empty task list");
             return this.taskList;
         }
@@ -92,8 +88,7 @@ public class Txt implements Persistence {
                 this.taskList.add(task);
             }
             scanner.close();
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
             System.out.println("Error reading from file: " + e.getMessage());
         }
 
@@ -119,10 +114,10 @@ public class Txt implements Persistence {
                 task = new Deadline(taskName, deadline);
             } else if (taskType.equals("E")) {
                 String[] eventParts = taskRecordParts[3].split("~");
-                task = new Event(taskName, DateTimeParser.extractDateTime(eventParts[0]), DateTimeParser.extractDateTime(eventParts[1]));
+                task = new Event(taskName, DateTimeParser.extractDateTime(eventParts[0]),
+                        DateTimeParser.extractDateTime(eventParts[1]));
             }
-        }
-        catch(DongjiEmptyTaskNameException e) {
+        } catch (DongjiEmptyTaskNameException e) {
             System.out.println("Error reading from file: " + e.getMessage());
         }
 
@@ -135,7 +130,7 @@ public class Txt implements Persistence {
 
     private String convertTaskToTxtRecord(Task task) {
         assert task != null;
-        
+
         StringBuilder sb = new StringBuilder();
 
         if (task instanceof Todo) {
@@ -153,7 +148,8 @@ public class Txt implements Persistence {
         if (task instanceof Deadline) {
             sb.append(" | " + DateTimeData.formatDate(((Deadline) task).getDeadline()));
         } else if (task instanceof Event) {
-            sb.append(" | " + DateTimeData.formatDate(((Event) task).getEventStart()) + "~" + DateTimeData.formatDate(((Event) task).getEventEnd()));
+            sb.append(" | " + DateTimeData.formatDate(((Event) task).getEventStart()) + "~"
+                    + DateTimeData.formatDate(((Event) task).getEventEnd()));
         }
 
         return sb.toString();

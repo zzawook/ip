@@ -1,8 +1,8 @@
-package Dongji.components.commands;
+package dongji.components.commands;
 
-import Dongji.components.tasks.Task;
-import Dongji.components.tasks.TaskList;
-import Dongji.exceptions.DongjiIndexOutOfBoundException;
+import dongji.components.tasks.Task;
+import dongji.components.tasks.TaskList;
+import dongji.exceptions.DongjiIndexOutOfBoundException;
 
 public class MarkCommand implements Command {
     private TaskList taskList;
@@ -13,8 +13,7 @@ public class MarkCommand implements Command {
         this.index = index;
     }
 
-    
-    /** 
+    /**
      * Marks the task at the index provided from the constructor
      * 
      * @return String
@@ -24,12 +23,11 @@ public class MarkCommand implements Command {
         try {
             Task toMark = this.taskList.get(this.index);
             toMark.mark();
-        }
-        catch (DongjiIndexOutOfBoundException e) {
+        } catch (DongjiIndexOutOfBoundException e) {
             return e.getMessage();
         }
-        
+
         return "Nice! I've marked this task as done:";
     }
-    
+
 }

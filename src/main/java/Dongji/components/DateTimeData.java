@@ -1,4 +1,4 @@
-package Dongji.components;
+package dongji.components;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,8 +13,7 @@ public class DateTimeData implements Comparable<DateTimeData> {
         this.hasTime = hasTime;
     }
 
-    
-    /** 
+    /**
      * Returns the date and time of the DateTimeData as LocalDateTime
      * 
      * @return LocalDateTime
@@ -22,8 +21,8 @@ public class DateTimeData implements Comparable<DateTimeData> {
     public LocalDateTime getDateTime() {
         return this.dateTime;
     }
-    
-    /** 
+
+    /**
      * Returns whether the DateTimeData has time
      * 
      * @return boolean
@@ -32,12 +31,10 @@ public class DateTimeData implements Comparable<DateTimeData> {
         return this.hasTime;
     }
 
-    
-    /** 
-     * Compares the DateTimeData object with another DateTimeData object. 
-     * Returns positive value if this object is later than the other object, 
-     * negative value if this object is earlier than the other object, 
-     * and 0 if they are the same.
+    /**
+     * Compares the DateTimeData object with another DateTimeData object. Returns
+     * positive value if this object is later than the other object, negative value
+     * if this object is earlier than the other object, and 0 if they are the same.
      * 
      * @param other
      * @return int
@@ -45,8 +42,8 @@ public class DateTimeData implements Comparable<DateTimeData> {
     public int compareTo(DateTimeData other) {
         return this.dateTime.compareTo(other.getDateTime());
     }
-    
-    /** 
+
+    /**
      * Returns whether the input string is a valid date and time
      * 
      * @param input
@@ -60,8 +57,8 @@ public class DateTimeData implements Comparable<DateTimeData> {
             return false;
         }
     }
-    
-    /** 
+
+    /**
      * Returns whether the input string is a valid date and time with time
      * 
      * @param input
@@ -75,8 +72,8 @@ public class DateTimeData implements Comparable<DateTimeData> {
             return false;
         }
     }
-    
-    /** 
+
+    /**
      * @param dateTimeData
      * @return String
      */

@@ -1,21 +1,20 @@
-package Dongji.components.tasks;
+package dongji.components.tasks;
 
-import Dongji.components.DateTimeData;
-import Dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.components.DateTimeData;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public class Event extends Task {
 
     private DateTimeData eventStart;
     private DateTimeData eventEnd;
 
-    public Event(String name, DateTimeData eventStart, DateTimeData eventEnd) throws DongjiEmptyTaskNameException{
+    public Event(String name, DateTimeData eventStart, DateTimeData eventEnd) throws DongjiEmptyTaskNameException {
         super(name);
         this.eventStart = eventStart;
         this.eventEnd = eventEnd;
     }
 
-    
-    /** 
+    /**
      * Returns the DateTimeDate object that represents start date of the event.
      * 
      * @return DateTimeData
@@ -24,8 +23,7 @@ public class Event extends Task {
         return this.eventStart;
     }
 
-    
-    /** 
+    /**
      * Returns the DateTimeDate object that represents end date of the event.
      * 
      * @return DateTimeData
@@ -35,6 +33,7 @@ public class Event extends Task {
     }
 
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + DateTimeData.formatDate(this.eventStart) + " to: " + DateTimeData.formatDate(this.eventEnd) + ")";
+        return "[E]" + super.toString() + " (from: " + DateTimeData.formatDate(this.eventStart) + " to: "
+                + DateTimeData.formatDate(this.eventEnd) + ")";
     }
 }

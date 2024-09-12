@@ -1,14 +1,14 @@
-package Dongji.components.tasks;
+package dongji.components.tasks;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import Dongji.exceptions.DongjiIndexOutOfBoundException;
+import dongji.exceptions.DongjiIndexOutOfBoundException;
 
 public class TaskList {
 
-    public List<Task> taskList;
+    private List<Task> taskList;
 
     public TaskList() {
         this.taskList = new ArrayList<Task>();
@@ -33,7 +33,9 @@ public class TaskList {
     }
 
     /**
-     * Returns the task at the specified index. Throws an DongjiIndexOutOfBoundException if the index is invalid (i.e. less than 0 or greater than the size of the task list)
+     * Returns the task at the specified index. Throws an
+     * DongjiIndexOutOfBoundException if the index is invalid (i.e. less than 0 or
+     * greater than the size of the task list)
      * 
      * @param index
      * @return Task
@@ -47,7 +49,9 @@ public class TaskList {
     }
 
     /**
-     * Removes the task at the specified index. Throws an DongjiIndexOutOfBoundException if the index is invalid (i.e. less than 0 or greater than the size of the task list)
+     * Removes the task at the specified index. Throws an
+     * DongjiIndexOutOfBoundException if the index is invalid (i.e. less than 0 or
+     * greater than the size of the task list)
      * 
      * @param index
      * @return Task
@@ -68,9 +72,10 @@ public class TaskList {
         return deletedTask;
     }
 
-    
-    /** 
-     * Marks the task at the specified index. Throws an DongjiIndexOutOfBoundException if the index is invalid (i.e. less than 0 or greater than the size of the task list)
+    /**
+     * Marks the task at the specified index. Throws an
+     * DongjiIndexOutOfBoundException if the index is invalid (i.e. less than 0 or
+     * greater than the size of the task list)
      * 
      * @param index
      * @throws DongjiIndexOutOfBoundException
@@ -84,10 +89,10 @@ public class TaskList {
         assert this.taskList.get(index).isMarked();
     }
 
-    
-    
-    /** 
-     * Unmarks the task at the specified index. Throws an DongjiIndexOutOfBoundException if the index is invalid (i.e. less than 0 or greater than the size of the task list)
+    /**
+     * Unmarks the task at the specified index. Throws an
+     * DongjiIndexOutOfBoundException if the index is invalid (i.e. less than 0 or
+     * greater than the size of the task list)
      * 
      * @param index
      * @throws DongjiIndexOutOfBoundException
@@ -101,8 +106,7 @@ public class TaskList {
         assert !this.taskList.get(index).isMarked();
     }
 
-    
-    /** 
+    /**
      * Adds the task to the task list
      * 
      * @param task
@@ -117,8 +121,7 @@ public class TaskList {
         return task;
     }
 
-    
-    /** 
+    /**
      * Returns a string representation of the task list
      * 
      * @return String

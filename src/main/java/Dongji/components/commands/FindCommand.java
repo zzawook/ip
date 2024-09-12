@@ -1,7 +1,7 @@
-package Dongji.components.commands;
+package dongji.components.commands;
 
-import Dongji.components.tasks.TaskList;
-import Dongji.exceptions.DongjiIndexOutOfBoundException;
+import dongji.components.tasks.TaskList;
+import dongji.exceptions.DongjiIndexOutOfBoundException;
 
 public class FindCommand implements Command {
 

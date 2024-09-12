@@ -1,5 +1,4 @@
-package Dongji.components.commands;
-
+package dongji.components.commands;
 
 public interface Command {
 

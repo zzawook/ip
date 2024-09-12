@@ -6,8 +6,9 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import Dongji.components.DateTimeData;
-import Dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.components.DateTimeData;
+import dongji.components.tasks.Event;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public class EventTest {
 

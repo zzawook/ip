@@ -1,6 +1,6 @@
-package Dongji.components.commands;
+package dongji.components.commands;
 
-import Dongji.components.tasks.TaskList;
+import dongji.components.tasks.TaskList;
 
 public class ListCommand implements Command {
     private TaskList taskList;
@@ -9,8 +9,7 @@ public class ListCommand implements Command {
         this.taskList = taskList;
     }
 
-    
-    /** 
+    /**
      * Lists all tasks in the task list
      * 
      * @return String

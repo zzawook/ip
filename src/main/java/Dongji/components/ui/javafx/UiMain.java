@@ -1,8 +1,8 @@
-package Dongji.components.ui.javafx;
+package dongji.components.ui.javafx;
 
-import Dongji.Dongji;
 import java.io.IOException;
 
+import dongji.Dongji;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,8 +16,7 @@ public class UiMain extends Application {
 
     private Dongji dongji = new Dongji();
 
-    
-    /** 
+    /**
      * @param stage
      */
     @Override
@@ -27,7 +26,7 @@ public class UiMain extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setDongji(dongji);  // inject the Dongji instance
+            fxmlLoader.<MainWindow>getController().setDongji(dongji); // inject the Dongji instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

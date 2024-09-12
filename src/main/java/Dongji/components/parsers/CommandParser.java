@@ -1,20 +1,20 @@
-package Dongji.components.parsers;
+package dongji.components.parsers;
 
 import java.time.format.DateTimeParseException;
 
-import Dongji.components.DateTimeData;
-import Dongji.components.commands.Command;
-import Dongji.components.commands.DeadlineCommand;
-import Dongji.components.commands.DeleteCommand;
-import Dongji.components.commands.EventCommand;
-import Dongji.components.commands.FindCommand;
-import Dongji.components.commands.ListCommand;
-import Dongji.components.commands.MarkCommand;
-import Dongji.components.commands.TodoCommand;
-import Dongji.components.commands.UnmarkCommand;
-import Dongji.components.tasks.TaskList;
-import Dongji.exceptions.DongjiParseException;
-import Dongji.exceptions.DongjiUnknownInstructionException;
+import dongji.components.DateTimeData;
+import dongji.components.commands.Command;
+import dongji.components.commands.DeadlineCommand;
+import dongji.components.commands.DeleteCommand;
+import dongji.components.commands.EventCommand;
+import dongji.components.commands.FindCommand;
+import dongji.components.commands.ListCommand;
+import dongji.components.commands.MarkCommand;
+import dongji.components.commands.TodoCommand;
+import dongji.components.commands.UnmarkCommand;
+import dongji.components.tasks.TaskList;
+import dongji.exceptions.DongjiParseException;
+import dongji.exceptions.DongjiUnknownInstructionException;
 
 public class CommandParser {
     private TaskList taskList;
@@ -23,8 +23,7 @@ public class CommandParser {
         this.taskList = taskList;
     }
 
-    
-    /** 
+    /**
      * Parses the command string into a corresponding Command object
      * 
      * @param commandString
@@ -67,7 +66,8 @@ public class CommandParser {
             eventEndDate = this.extractEventEndDate(commandString);
 
             if (isEventEndEarlierThanStart(eventStartDate, eventEndDate)) {
-                throw new DongjiParseException("Event end date is earlier than start date. Please provide a valid dates");
+                throw new DongjiParseException(
+                        "Event end date is earlier than start date. Please provide a valid dates");
             }
 
             return new EventCommand(this.taskList, taskName, eventStartDate, eventEndDate);
@@ -83,11 +83,11 @@ public class CommandParser {
             throw new DongjiUnknownInstructionException("Unknown instruction! Please provide a valid instruction");
         }
     }
-    
+
     private boolean isEventEndEarlierThanStart(DateTimeData startDate, DateTimeData endDate) {
         assert startDate != null;
         assert endDate != null;
-        
+
         return startDate.compareTo(endDate) > 0;
     }
 
@@ -151,7 +151,7 @@ public class CommandParser {
     }
 
     private DateTimeData extractEventEndDate(String commandString) throws DongjiParseException {
-        assert commandString.split(" /to ", 2).length >= 2; 
+        assert commandString.split(" /to ", 2).length >= 2;
         String afterTo = commandString.split(" /to ", 2)[1];
         DateTimeData endDateData;
 

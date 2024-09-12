@@ -7,11 +7,12 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import Dongji.components.DateTimeData;
-import Dongji.components.tasks.Deadline;
-import Dongji.components.tasks.Event;
-import Dongji.components.tasks.TaskList;
-import Dongji.components.tasks.Todo;
+import dongji.components.DateTimeData;
+import dongji.components.commands.ListCommand;
+import dongji.components.tasks.Deadline;
+import dongji.components.tasks.Event;
+import dongji.components.tasks.TaskList;
+import dongji.components.tasks.Todo;
 
 public class ListCommandTest {
     ListCommand listCommand;

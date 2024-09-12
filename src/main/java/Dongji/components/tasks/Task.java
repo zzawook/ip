@@ -1,12 +1,12 @@
-package Dongji.components.tasks;
+package dongji.components.tasks;
 
-import Dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public abstract class Task {
     private String name;
     private boolean isMarked;
 
-    public Task(String name) throws DongjiEmptyTaskNameException{
+    public Task(String name) throws DongjiEmptyTaskNameException {
         if (name.trim().length() == 0) {
             throw new DongjiEmptyTaskNameException("Task name cannot be empty! Please provide a task name");
         }
@@ -27,15 +27,14 @@ public abstract class Task {
         this.isMarked = false;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String getName() {
         return this.name;
     }
-    
-    /** 
+
+    /**
      * @return boolean
      */
     public boolean isMarked() {

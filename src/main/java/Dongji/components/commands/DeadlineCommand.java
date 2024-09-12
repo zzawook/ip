@@ -1,13 +1,13 @@
-package Dongji.components.commands;
+package dongji.components.commands;
 
-import Dongji.components.DateTimeData;
-import Dongji.components.tasks.Deadline;
-import Dongji.components.tasks.Task;
-import Dongji.components.tasks.TaskList;
-import Dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.components.DateTimeData;
+import dongji.components.tasks.Deadline;
+import dongji.components.tasks.Task;
+import dongji.components.tasks.TaskList;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public class DeadlineCommand implements Command {
-    
+
     private TaskList taskList;
     private String taskName;
     private DateTimeData deadline;
@@ -18,10 +18,10 @@ public class DeadlineCommand implements Command {
         this.deadline = deadlineDate;
     }
 
-    
-    /** 
-     * Creates a new Deadline task with task name and deadline date provided from constructor
-     * 
+    /**
+     * Creates a new Deadline task with task name and deadline date provided from
+     * constructor
+     *
      * @return String
      */
     @Override
@@ -29,8 +29,7 @@ public class DeadlineCommand implements Command {
         Task addedDeadline;
         try {
             addedDeadline = this.taskList.add(new Deadline(taskName, deadline));
-        } 
-        catch (DongjiEmptyTaskNameException e) {
+        } catch (DongjiEmptyTaskNameException e) {
             return e.getMessage();
         }
 

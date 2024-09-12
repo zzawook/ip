@@ -1,19 +1,18 @@
-package Dongji.components.tasks;
+package dongji.components.tasks;
 
-import Dongji.components.DateTimeData;
-import Dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.components.DateTimeData;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public class Deadline extends Task {
 
     private DateTimeData deadline;
 
-    public Deadline(String name, DateTimeData deadline) throws DongjiEmptyTaskNameException{
+    public Deadline(String name, DateTimeData deadline) throws DongjiEmptyTaskNameException {
         super(name);
         this.deadline = deadline;
     }
 
-    
-    /** 
+    /**
      * Returns the deadline of the task.
      * 
      * @return DateTimeData

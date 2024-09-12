@@ -1,11 +1,11 @@
-package Dongji.components.commands;
+package dongji.components.commands;
 
-import Dongji.components.tasks.Task;
-import Dongji.components.tasks.TaskList;
-import Dongji.exceptions.DongjiIndexOutOfBoundException;
+import dongji.components.tasks.Task;
+import dongji.components.tasks.TaskList;
+import dongji.exceptions.DongjiIndexOutOfBoundException;
 
 public class UnmarkCommand implements Command {
-    
+
     private TaskList taskList;
     private int index;
 
@@ -14,8 +14,7 @@ public class UnmarkCommand implements Command {
         this.index = index;
     }
 
-    
-    /** 
+    /**
      * Unmarks the task at the index provided from the constructor
      * 
      * @return String
@@ -25,12 +24,11 @@ public class UnmarkCommand implements Command {
         try {
             Task toUnmark = this.taskList.get(index);
             toUnmark.unmark();
-        }
-        catch(DongjiIndexOutOfBoundException e) {
+        } catch (DongjiIndexOutOfBoundException e) {
             return e.getMessage();
         }
-        
+
         return "Okay, I've marked this task as not done yet";
     }
-    
+
 }

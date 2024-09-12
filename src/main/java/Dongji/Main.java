@@ -1,8 +1,8 @@
-package Dongji;
+package dongji;
 
-import Dongji.components.ui.CommandLine;
-import Dongji.components.ui.javafx.UiMain;
-import javafx.application.Application; 
+import dongji.components.ui.CommandLine;
+import dongji.components.ui.javafx.UiMain;
+import javafx.application.Application;
 
 public class Main {
     public static void main(String[] args) {

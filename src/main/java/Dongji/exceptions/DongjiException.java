@@ -1,4 +1,4 @@
-package Dongji.exceptions;
+package dongji.exceptions;
 
 public class DongjiException extends Exception {
     public DongjiException(String message) {

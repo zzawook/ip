@@ -1,4 +1,4 @@
-package Dongji.exceptions;
+package dongji.exceptions;
 
 public class DongjiIndexOutOfBoundException extends DongjiException {
     public DongjiIndexOutOfBoundException(String message) {

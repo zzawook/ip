@@ -1,13 +1,13 @@
-package Dongji.components.commands;
+package dongji.components.commands;
 
-import Dongji.components.DateTimeData;
-import Dongji.components.tasks.Event;
-import Dongji.components.tasks.Task;
-import Dongji.components.tasks.TaskList;
-import Dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.components.DateTimeData;
+import dongji.components.tasks.Event;
+import dongji.components.tasks.Task;
+import dongji.components.tasks.TaskList;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public class EventCommand implements Command {
-    
+
     private TaskList taskList;
     private String taskName;
     private DateTimeData startDate;
@@ -20,9 +20,9 @@ public class EventCommand implements Command {
         this.endDate = endDate;
     }
 
-    
-    /** 
-     * Creates Event task with task name, start date and end date provided from constructor
+    /**
+     * Creates Event task with task name, start date and end date provided from
+     * constructor
      * 
      * @return String
      */
@@ -31,8 +31,7 @@ public class EventCommand implements Command {
         Task addedEvent;
         try {
             addedEvent = this.taskList.add(new Event(this.taskName, this.startDate, this.endDate));
-        }
-        catch (DongjiEmptyTaskNameException e) {
+        } catch (DongjiEmptyTaskNameException e) {
             return e.getMessage();
         }
 

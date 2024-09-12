@@ -1,8 +1,8 @@
-package Dongji.components.commands;
+package dongji.components.commands;
 
-import Dongji.components.tasks.Task;
-import Dongji.components.tasks.TaskList;
-import Dongji.exceptions.DongjiIndexOutOfBoundException;
+import dongji.components.tasks.Task;
+import dongji.components.tasks.TaskList;
+import dongji.exceptions.DongjiIndexOutOfBoundException;
 
 public class DeleteCommand implements Command {
     private TaskList taskList;
@@ -13,8 +13,7 @@ public class DeleteCommand implements Command {
         this.index = index;
     }
 
-    
-    /** 
+    /**
      * Deletes the task at the index provided from the constructor
      * 
      * @return String
@@ -24,12 +23,11 @@ public class DeleteCommand implements Command {
         Task deletedTask;
         try {
             deletedTask = this.taskList.deleteTask(index);
-        }
-        catch(DongjiIndexOutOfBoundException e) {
+        } catch (DongjiIndexOutOfBoundException e) {
             return e.getMessage();
         }
 
         return "Noted. I've removed this task:\n" + deletedTask + "\nNow you have " + this.taskList.size()
-        + " tasks in the list.";
+                + " tasks in the list.";
     }
 }

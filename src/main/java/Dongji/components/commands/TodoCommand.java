@@ -1,9 +1,9 @@
-package Dongji.components.commands;
+package dongji.components.commands;
 
-import Dongji.components.tasks.Task;
-import Dongji.components.tasks.TaskList;
-import Dongji.components.tasks.Todo;
-import Dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.components.tasks.Task;
+import dongji.components.tasks.TaskList;
+import dongji.components.tasks.Todo;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public class TodoCommand implements Command {
     private TaskList taskList;
@@ -14,8 +14,7 @@ public class TodoCommand implements Command {
         this.taskName = taskName;
     }
 
-    
-    /** 
+    /**
      * Creates Todo task with task name provided from the constructor
      * 
      * @return String
@@ -25,10 +24,9 @@ public class TodoCommand implements Command {
         Task addedTodo;
         try {
             addedTodo = this.taskList.add(new Todo(taskName));
-        }
-        catch (DongjiEmptyTaskNameException e) {
+        } catch (DongjiEmptyTaskNameException e) {
             return e.getMessage();
         }
         return "added: " + addedTodo.getName();
-    }    
+    }
 }

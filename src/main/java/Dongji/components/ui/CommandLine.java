@@ -1,8 +1,8 @@
-package Dongji.components.ui;
+package dongji.components.ui;
 
 import java.util.Scanner;
 
-import Dongji.Dongji;
+import dongji.Dongji;
 
 public class CommandLine {
     private final String SEPARATOR = "-------------------------------";
@@ -14,8 +14,7 @@ public class CommandLine {
         this.dongji = new Dongji();
     }
 
-    
-    /** 
+    /**
      * Reads the user input from the command line and returns it as a String
      * 
      * @return String
@@ -38,8 +37,8 @@ public class CommandLine {
         dongji.terminate();
         close();
     }
-    
-    /** 
+
+    /**
      * Prints the given String str after wrapping with separator
      * 
      * @param str
@@ -52,7 +51,7 @@ public class CommandLine {
         return SEPARATOR + "\n=> " + input + "\n" + SEPARATOR;
     }
 
-    /** 
+    /**
      * Prints welcome message
      */
     private void showWelcome() {
@@ -60,7 +59,7 @@ public class CommandLine {
         System.out.println("What can I do for you?");
     }
 
-    /** 
+    /**
      * Prints good bye message
      */
     private void showGoodbye() {
