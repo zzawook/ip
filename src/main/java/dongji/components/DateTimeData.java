@@ -36,7 +36,7 @@ public class DateTimeData implements Comparable<DateTimeData> {
      * positive value if this object is later than the other object, negative value
      * if this object is earlier than the other object, and 0 if they are the same.
      * 
-     * @param other
+     * @param DateTimeData other
      * @return int
      */
     public int compareTo(DateTimeData other) {

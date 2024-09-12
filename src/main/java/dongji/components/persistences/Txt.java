@@ -27,8 +27,6 @@ public class Txt implements Persistence {
     /**
      * Exports currently saved tasks to a txt file. If the file does not exist, it
      * will create a new file
-     * 
-     * @return TaskList
      */
     @Override
     public void exportTasks() {

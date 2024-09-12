@@ -43,7 +43,7 @@ test {
 }
 
 application {
-    mainClass.set("Dongji/components/ui/javafx/Launcher")
+    mainClass.set("dongji/components/ui/javafx/Launcher")
 }
 
 shadowJar {

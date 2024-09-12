@@ -55,7 +55,9 @@ public class CommandParser {
         case "event":
             if (!isCommandStringValidEvent(commandString)) {
                 throw new DongjiParseException(
-                        "Invalid command format for event. Please follow the format: event <task name> /from <yyyy-mm-dd [hhmm; optional]> /to <yyyy-mm-dd [hhmm; optional]>");
+                        "Invalid command format for event. Please follow the format: "
+                                + "event <task name> /from <yyyy-mm-dd [hhmm; optional]>"
+                                + " /to <yyyy-mm-dd [hhmm; optional]>");
             }
             taskName = this.extractTaskName(commandString);
 
@@ -74,7 +76,8 @@ public class CommandParser {
         case "deadline":
             if (!isCommandStringValidDeadline(commandString)) {
                 throw new DongjiParseException(
-                        "Invalid command format for deadline. Please follow the format: deadline <task name> /by <yyyy-mm-dd [hhmm; optional]>");
+                        "Invalid command format for deadline. Please follow the format: "
+                                + "deadline <task name> /by <yyyy-mm-dd [hhmm; optional]>");
             }
             taskName = this.extractTaskName(commandString);
             DateTimeData deadlineDate = this.extractDeadline(commandString);
@@ -126,7 +129,8 @@ public class CommandParser {
             deadlineData = DateTimeParser.extractDateTime(deadlineDateTimeString);
         } catch (DateTimeParseException e) {
             throw new DongjiParseException(
-                    "Invalid date format for deadline. Please follow the format: deadline <task name> /by <yyyy-mm-dd [hhmm; optional]>");
+                    "Invalid date format for deadline. Please follow the format: "
+                            + "deadline <task name> /by <yyyy-mm-dd [hhmm; optional]>");
         }
 
         return deadlineData;
@@ -144,7 +148,9 @@ public class CommandParser {
             startDateData = DateTimeParser.extractDateTime(beforeTo);
         } catch (DateTimeParseException e) {
             throw new DongjiParseException(
-                    "Invalid date format for event start date. Please follow the format: event <task name> /from <yyyy-mm-dd [hhmm; optional]> /to <yyyy-mm-dd [hhmm; optional]>");
+                    "Invalid date format for event start date. Please follow the format: " 
+                            + "event <task name> /from <yyyy-mm-dd [hhmm; optional]>"
+                            + " /to <yyyy-mm-dd [hhmm; optional]>");
         }
 
         return startDateData;
@@ -159,7 +165,9 @@ public class CommandParser {
             endDateData = DateTimeParser.extractDateTime(afterTo);
         } catch (DateTimeParseException e) {
             throw new DongjiParseException(
-                    "Invalid date format for event end date. Please follow the format: event <task name> /from <yyyy-mm-dd [hhmm; optional]> /to <yyyy-mm-dd [hhmm; optional]>");
+                    "Invalid date format for event end date. Please follow the format: "
+                            + "event <task name> /from <yyyy-mm-dd [hhmm; optional]> "
+                            + "/to <yyyy-mm-dd [hhmm; optional]>");
         }
 
         return endDateData;

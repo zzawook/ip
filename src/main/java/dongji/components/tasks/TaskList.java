@@ -26,7 +26,7 @@ public class TaskList {
     /**
      * Returns an iterator for the task list
      * 
-     * @return Iterator<Task>
+     * @return Iterator<Task/>
      */
     public Iterator<Task> iterator() {
         return this.taskList.iterator();
