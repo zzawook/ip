@@ -4,7 +4,6 @@ import java.util.List;
 
 import Dongji.components.tasks.Task;
 import Dongji.components.tasks.TaskList;
-import Dongji.exceptions.DongjiIndexOutOfBoundException;
 
 public class FindCommand implements Command {
 
