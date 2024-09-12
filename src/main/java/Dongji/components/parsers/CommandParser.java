@@ -85,6 +85,9 @@ public class CommandParser {
     }
     
     private boolean isEventEndEarlierThanStart(DateTimeData startDate, DateTimeData endDate) {
+        assert startDate != null;
+        assert endDate != null;
+        
         return startDate.compareTo(endDate) > 0;
     }
 
@@ -97,19 +100,25 @@ public class CommandParser {
     }
 
     private int parseIndex(String commandString) {
+        assert commandString.split(" ").length >= 2;
         return Integer.parseInt(commandString.split(" ")[1]) - 1;
     }
 
     private String parseKeyword(String commandString) {
+        assert commandString.split(" ", 2).length >= 2;
         return commandString.split(" ", 2)[1];
     }
 
     private String extractTaskName(String commandString) {
+        assert commandString.split(" ", 2).length >= 2;
         String afterCommand = commandString.split(" ", 2)[1];
+
+        assert afterCommand.split(" /", 2).length >= 1;
         return afterCommand.split(" /", 2)[0];
     }
 
     private DateTimeData extractDeadline(String commandString) throws DongjiParseException {
+        assert commandString.split(" /by ", 2).length >= 2;
         String deadlineDateTimeString = commandString.split(" /by ", 2)[1];
         DateTimeData deadlineData;
 
@@ -124,7 +133,10 @@ public class CommandParser {
     }
 
     private DateTimeData extractEventStartDate(String commandString) throws DongjiParseException {
+        assert commandString.split(" /from ", 2).length >= 2;
         String afterFrom = commandString.split(" /from ", 2)[1];
+
+        assert afterFrom.split(" /to ", 2).length >= 1;
         String beforeTo = afterFrom.split(" /to ", 2)[0];
         DateTimeData startDateData;
 
@@ -139,6 +151,7 @@ public class CommandParser {
     }
 
     private DateTimeData extractEventEndDate(String commandString) throws DongjiParseException {
+        assert commandString.split(" /to ", 2).length >= 2; 
         String afterTo = commandString.split(" /to ", 2)[1];
         DateTimeData endDateData;
 

@@ -58,9 +58,14 @@ public class TaskList {
             throw new DongjiIndexOutOfBoundException("Index out of bound! Please provide a valid index of task");
         }
 
+        int initSize = this.taskList.size();
         Task deletedTask = this.taskList.remove(index);
-        return deletedTask;
 
+        assert deletedTask != null;
+        assert !this.taskList.contains(deletedTask);
+        assert this.taskList.size() == initSize - 1;
+
+        return deletedTask;
     }
 
     
@@ -76,6 +81,7 @@ public class TaskList {
         }
 
         this.taskList.get(index).mark();
+        assert this.taskList.get(index).isMarked();
     }
 
     
@@ -92,6 +98,7 @@ public class TaskList {
         }
 
         this.taskList.get(index).unmark();
+        assert !this.taskList.get(index).isMarked();
     }
 
     
@@ -102,7 +109,11 @@ public class TaskList {
      * @return Task
      */
     public Task add(Task task) {
+        int initSize = this.taskList.size();
         this.taskList.add(task);
+
+        assert this.taskList.size() == initSize + 1;
+        assert this.taskList.contains(task);
         return task;
     }
 

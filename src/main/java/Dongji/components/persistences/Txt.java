@@ -103,6 +103,9 @@ public class Txt implements Persistence {
 
     private Task convertTxtRecordToTask(String taskRecord) {
         String[] taskRecordParts = taskRecord.split(" \\| ");
+
+        assert taskRecordParts.length >= 3;
+
         String taskType = taskRecordParts[0];
         boolean isMarked = taskRecordParts[1].equals("1");
         String taskName = taskRecordParts[2];
@@ -131,6 +134,8 @@ public class Txt implements Persistence {
     }
 
     private String convertTaskToTxtRecord(Task task) {
+        assert task != null;
+        
         StringBuilder sb = new StringBuilder();
 
         if (task instanceof Todo) {
