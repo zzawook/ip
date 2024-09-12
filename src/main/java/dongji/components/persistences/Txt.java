@@ -10,6 +10,7 @@ import dongji.components.DateTimeData;
 import dongji.components.parsers.DateTimeParser;
 import dongji.components.tasks.Deadline;
 import dongji.components.tasks.Event;
+import dongji.components.tasks.Recurring;
 import dongji.components.tasks.Task;
 import dongji.components.tasks.TaskList;
 import dongji.components.tasks.Todo;
@@ -114,6 +115,8 @@ public class Txt implements Persistence {
                 String[] eventParts = taskRecordParts[3].split("~");
                 task = new Event(taskName, DateTimeParser.extractDateTime(eventParts[0]),
                         DateTimeParser.extractDateTime(eventParts[1]));
+            } else if (taskType.equals("R")) {
+                task = new Recurring(taskName, taskRecordParts[3]);
             }
         } catch (DongjiEmptyTaskNameException e) {
             System.out.println("Error reading from file: " + e.getMessage());
@@ -137,6 +140,8 @@ public class Txt implements Persistence {
             sb.append("D | ");
         } else if (task instanceof Event) {
             sb.append("E | ");
+        } else if (task instanceof Recurring) {
+            sb.append("R | ");
         }
 
         sb.append(task.isMarked() ? "1 | " : "0 | ");
@@ -148,6 +153,8 @@ public class Txt implements Persistence {
         } else if (task instanceof Event) {
             sb.append(" | " + DateTimeData.formatDate(((Event) task).getEventStart()) + "~"
                     + DateTimeData.formatDate(((Event) task).getEventEnd()));
+        } else if (task instanceof Recurring) {
+            sb.append(" | " + ((Recurring) task).getCron());
         }
 
         return sb.toString();
