@@ -30,7 +30,7 @@ public class Dongji {
      * Generates a response for the user's chat message.
      */
     public String getResponse(String input) {
-        CommandParser parser = new CommandParser(this.taskList);
+        CommandParser parser = new CommandParser(this.taskList, this);
 
         Command currentCommand = null;
         try {

@@ -2,6 +2,7 @@ package dongji.components.parsers;
 
 import java.time.format.DateTimeParseException;
 
+import dongji.Dongji;
 import dongji.components.DateTimeData;
 import dongji.components.commands.Command;
 import dongji.components.commands.DeadlineCommand;
@@ -10,6 +11,7 @@ import dongji.components.commands.EventCommand;
 import dongji.components.commands.FindCommand;
 import dongji.components.commands.ListCommand;
 import dongji.components.commands.MarkCommand;
+import dongji.components.commands.RecurringCommand;
 import dongji.components.commands.TodoCommand;
 import dongji.components.commands.UnmarkCommand;
 import dongji.components.tasks.TaskList;
@@ -18,9 +20,11 @@ import dongji.exceptions.DongjiUnknownInstructionException;
 
 public class CommandParser {
     private TaskList taskList;
+    private Dongji dongji;
 
-    public CommandParser(TaskList taskList) {
+    public CommandParser(TaskList taskList, Dongji dongji) {
         this.taskList = taskList;
+        this.dongji = dongji;
     }
 
     /**
@@ -82,9 +86,32 @@ public class CommandParser {
             taskName = this.extractTaskName(commandString);
             DateTimeData deadlineDate = this.extractDeadline(commandString);
             return new DeadlineCommand(this.taskList, taskName, deadlineDate);
+        case "recur":
+            if (!isCommandStringValidRecurring(commandString)) {
+                throw new DongjiParseException(
+                        "Invalid command format for recurring. Please follow the format: "
+                                + "recur <task name> /cron <* * * * *>");
+            }
+
+            taskName = this.extractTaskName(commandString);
+            String cron = commandString.split(" /cron ")[1].trim();
+            return new RecurringCommand(this.taskList, taskName, cron);
+        case "bye":
+            this.dongji.terminate();
         default:
             throw new DongjiUnknownInstructionException("Unknown instruction! Please provide a valid instruction");
         }
+    }
+
+    private boolean isCommandStringValidRecurring(String commandString) {
+        return commandString.contains("/cron") && this.hasValidCron(commandString);
+    }
+
+    private boolean hasValidCron(String commandString) {
+        String cron = commandString.split(" /cron ")[1].trim();
+        String[] cronParts = cron.split(" ");
+
+        return cronParts.length == 5;
     }
 
     private boolean isEventEndEarlierThanStart(DateTimeData startDate, DateTimeData endDate) {
