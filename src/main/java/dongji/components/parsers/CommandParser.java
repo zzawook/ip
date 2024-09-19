@@ -10,6 +10,7 @@ import dongji.components.commands.DeadlineCommand;
 import dongji.components.commands.DeleteCommand;
 import dongji.components.commands.EventCommand;
 import dongji.components.commands.FindCommand;
+import dongji.components.commands.HelpCommand;
 import dongji.components.commands.ListCommand;
 import dongji.components.commands.MarkCommand;
 import dongji.components.commands.RecurringCommand;
@@ -102,6 +103,8 @@ public class CommandParser {
             return new RecurringCommand(this.taskList, taskName, cron);
         case "bye":
             return new ByeCommand(this.dongji);
+        case "help":
+            return new HelpCommand();
         default:
             throw new DongjiUnknownInstructionException("Unknown instruction! Please provide a valid instruction");
         }
