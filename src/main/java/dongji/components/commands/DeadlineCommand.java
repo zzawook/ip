@@ -6,6 +6,9 @@ import dongji.components.tasks.Task;
 import dongji.components.tasks.TaskList;
 import dongji.exceptions.DongjiEmptyTaskNameException;
 
+/**
+ * Command to add a Deadline task to the task list
+ */
 public class DeadlineCommand implements Command {
 
     private TaskList taskList;

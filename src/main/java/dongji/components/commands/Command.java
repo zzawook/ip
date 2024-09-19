@@ -1,5 +1,9 @@
 package dongji.components.commands;
 
+/**
+ * Interface for all commands that defines behavior of all command. 
+ * Obeys Command design pattern.
+ */
 public interface Command {
 
     /**

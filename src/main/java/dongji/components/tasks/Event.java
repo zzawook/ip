@@ -3,6 +3,9 @@ package dongji.components.tasks;
 import dongji.components.DateTimeData;
 import dongji.exceptions.DongjiEmptyTaskNameException;
 
+/**
+ * Represents an Event task.
+ */
 public class Event extends Task {
 
     private DateTimeData eventStart;
@@ -16,7 +19,6 @@ public class Event extends Task {
 
     /**
      * Returns the DateTimeDate object that represents start date of the event.
-     * 
      * @return DateTimeData
      */
     public DateTimeData getEventStart() {
@@ -25,7 +27,6 @@ public class Event extends Task {
 
     /**
      * Returns the DateTimeDate object that represents end date of the event.
-     * 
      * @return DateTimeData
      */
     public DateTimeData getEventEnd() {

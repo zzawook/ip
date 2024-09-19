@@ -19,6 +19,9 @@ import dongji.components.tasks.TaskList;
 import dongji.exceptions.DongjiParseException;
 import dongji.exceptions.DongjiUnknownInstructionException;
 
+/**
+ * Parser to parse the command string into a corresponding Command object
+ */
 public class CommandParser {
     private TaskList taskList;
     private Dongji dongji;
@@ -154,7 +157,7 @@ public class CommandParser {
         DateTimeData deadlineData;
 
         try {
-            deadlineData = DateTimeParser.extractDateTime(deadlineDateTimeString);
+            deadlineData = DateTimeData.fromString(deadlineDateTimeString);
         } catch (DateTimeParseException e) {
             throw new DongjiParseException(
                     "Invalid date format for deadline. Please follow the format: "
@@ -173,7 +176,7 @@ public class CommandParser {
         DateTimeData startDateData;
 
         try {
-            startDateData = DateTimeParser.extractDateTime(beforeTo);
+            startDateData = DateTimeData.fromString(beforeTo);
         } catch (DateTimeParseException e) {
             throw new DongjiParseException(
                     "Invalid date format for event start date. Please follow the format: " 
@@ -190,7 +193,7 @@ public class CommandParser {
         DateTimeData endDateData;
 
         try {
-            endDateData = DateTimeParser.extractDateTime(afterTo);
+            endDateData = DateTimeData.fromString(afterTo);
         } catch (DateTimeParseException e) {
             throw new DongjiParseException(
                     "Invalid date format for event end date. Please follow the format: "

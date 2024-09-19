@@ -3,6 +3,9 @@ package dongji.components.commands;
 import dongji.Dongji;
 import javafx.application.Platform;
 
+/**
+ * Command to exit the application
+ */
 public class ByeCommand implements Command {
 
     private Dongji dongji;

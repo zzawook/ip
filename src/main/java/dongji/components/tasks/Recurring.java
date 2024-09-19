@@ -2,6 +2,9 @@ package dongji.components.tasks;
 
 import dongji.exceptions.DongjiEmptyTaskNameException;
 
+/**
+ * Represents a Recurring task.
+ */
 public class Recurring extends Task {
     private String cron;
 
@@ -10,6 +13,10 @@ public class Recurring extends Task {
         this.cron = cron;
     }
 
+    /**
+     * Returns the cron expression of the Recurring task.
+     * @return String
+     */
     public String getCron() {
         return cron;
     }

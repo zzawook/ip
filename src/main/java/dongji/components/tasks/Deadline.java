@@ -3,6 +3,9 @@ package dongji.components.tasks;
 import dongji.components.DateTimeData;
 import dongji.exceptions.DongjiEmptyTaskNameException;
 
+/**
+ * Represents a Deadline task.
+ */
 public class Deadline extends Task {
 
     private DateTimeData deadline;
@@ -14,7 +17,6 @@ public class Deadline extends Task {
 
     /**
      * Returns the deadline of the task.
-     * 
      * @return DateTimeData
      */
     public DateTimeData getDeadline() {

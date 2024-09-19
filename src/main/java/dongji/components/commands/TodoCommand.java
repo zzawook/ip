@@ -5,6 +5,9 @@ import dongji.components.tasks.TaskList;
 import dongji.components.tasks.Todo;
 import dongji.exceptions.DongjiEmptyTaskNameException;
 
+/**
+ * Command to add a Todo task to the task list
+ */
 public class TodoCommand implements Command {
     private TaskList taskList;
     private String taskName;

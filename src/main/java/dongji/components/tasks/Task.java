@@ -2,6 +2,9 @@ package dongji.components.tasks;
 
 import dongji.exceptions.DongjiEmptyTaskNameException;
 
+/**
+ * Represents a Task. Abstract class that is extended by other specific task types.
+ */
 public abstract class Task {
     private String name;
     private boolean isMarked;

@@ -5,13 +5,15 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * The main entry point to the application. Initializes the backend application Dongji, and starts the user interface.
+ * The main entry point to the application. 
+ * Initializes the backend application Dongji, and starts the user interface.
  */
 public class Main extends Application {
 
     private Dongji dongji;
 
     /**
+     * Entry point to the application.
      * @param stage
      */
     @Override

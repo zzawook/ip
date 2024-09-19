@@ -4,6 +4,9 @@ import dongji.components.tasks.Task;
 import dongji.components.tasks.TaskList;
 import dongji.exceptions.DongjiIndexOutOfBoundException;
 
+/**
+ * Command to delete a task from the task list
+ */
 public class DeleteCommand implements Command {
     private TaskList taskList;
     private int index;

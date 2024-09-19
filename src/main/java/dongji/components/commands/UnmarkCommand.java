@@ -4,6 +4,9 @@ import dongji.components.tasks.Task;
 import dongji.components.tasks.TaskList;
 import dongji.exceptions.DongjiIndexOutOfBoundException;
 
+/**
+ * Command to mark a task as not done (Unmark)
+ */
 public class UnmarkCommand implements Command {
 
     private TaskList taskList;

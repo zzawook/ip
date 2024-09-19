@@ -22,16 +22,25 @@ public class Dongji {
         this.persistence.importTasks();
     }
 
+    /**
+     * Terminates the application and exports the tasks to the persistence layer.
+     */
     public void terminate() {
         this.persistence.exportTasks();
     }
 
+    /**
+     * Returns a welcome message for the user.
+     * @return String
+     */
     public String welcomeMessage() {
         return "Hello! I'm Dongji, your Personal To-do Companion!\nWhat can I do for you?";
     }
 
     /**
      * Generates a response for the user's chat message.
+     * @param input
+     * @return String
      */
     public String getResponse(String input) {
         CommandParser parser = new CommandParser(this.taskList, this);

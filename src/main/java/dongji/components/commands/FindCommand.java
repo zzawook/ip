@@ -3,6 +3,9 @@ package dongji.components.commands;
 import dongji.components.tasks.TaskList;
 import dongji.exceptions.DongjiIndexOutOfBoundException;
 
+/**
+ * Command to find tasks that contain the keyword provided
+ */
 public class FindCommand implements Command {
 
     private TaskList taskList;

@@ -43,6 +43,14 @@ public class DateTimeData implements Comparable<DateTimeData> {
         return this.dateTime.compareTo(other.getDateTime());
     }
 
+    public static DateTimeData fromString(String input) throws DateTimeParseException {
+        boolean hasTime = input.contains(" ");
+        if (!hasTime) {
+            input += " 0000";
+        }
+        return new DateTimeData(LocalDateTime.parse(input, DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")), hasTime);
+    }
+
     /**
      * Returns whether the input string is a valid date and time
      * 

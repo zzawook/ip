@@ -7,6 +7,9 @@ import java.util.stream.Stream;
 
 import dongji.exceptions.DongjiIndexOutOfBoundException;
 
+/**
+ * Represents a list of tasks. Wrapper of List<Task>
+ */
 public class TaskList {
 
     private List<Task> taskList;
@@ -109,7 +112,6 @@ public class TaskList {
 
     /**
      * Adds the task to the task list
-     * 
      * @param task
      * @return Task
      */
@@ -132,6 +134,9 @@ public class TaskList {
      * @return String
      */
     public String listTasks() {
+        if (this.taskList.size() == 0) {
+            return "No tasks in the list!";
+        }
         StringBuilder sb = new StringBuilder();
         this.taskList.stream().forEach(task -> sb.append(task.toString() + "\n"));
         sb.deleteCharAt(sb.length() - 1);

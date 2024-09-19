@@ -5,6 +5,9 @@ import dongji.exceptions.DongjiEmptyTaskNameException;
 import dongji.components.tasks.Task;
 import dongji.components.tasks.Recurring;
 
+/**
+ * Command to add a Recurring task to the task list
+ */
 public class RecurringCommand implements Command {
 
     private TaskList taskList;

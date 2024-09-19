@@ -7,7 +7,6 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import dongji.components.DateTimeData;
-import dongji.components.parsers.DateTimeParser;
 import dongji.components.tasks.Deadline;
 import dongji.components.tasks.Event;
 import dongji.components.tasks.Recurring;
@@ -16,6 +15,9 @@ import dongji.components.tasks.TaskList;
 import dongji.components.tasks.Todo;
 import dongji.exceptions.DongjiEmptyTaskNameException;
 
+/**
+ * Represents a persistence layer for Dongji using txt file format
+ */
 public class Txt implements Persistence {
 
     private final String FILE_NAME = "dongji.txt";
@@ -109,12 +111,12 @@ public class Txt implements Persistence {
             if (taskType.equals("T")) {
                 task = new Todo(taskName);
             } else if (taskType.equals("D")) {
-                DateTimeData deadline = DateTimeParser.extractDateTime(taskRecordParts[3]);
+                DateTimeData deadline = DateTimeData.fromString(taskRecordParts[3]);
                 task = new Deadline(taskName, deadline);
             } else if (taskType.equals("E")) {
                 String[] eventParts = taskRecordParts[3].split("~");
-                task = new Event(taskName, DateTimeParser.extractDateTime(eventParts[0]),
-                        DateTimeParser.extractDateTime(eventParts[1]));
+                task = new Event(taskName, DateTimeData.fromString(eventParts[0]),
+                        DateTimeData.fromString(eventParts[1]));
             } else if (taskType.equals("R")) {
                 task = new Recurring(taskName, taskRecordParts[3]);
             }

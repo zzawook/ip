@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Represents the user interface for Dongji
+ */
 public class Ui {
     public static void startUi(Stage stage, Dongji dongji) {
         try {

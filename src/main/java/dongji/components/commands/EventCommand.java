@@ -6,6 +6,9 @@ import dongji.components.tasks.Task;
 import dongji.components.tasks.TaskList;
 import dongji.exceptions.DongjiEmptyTaskNameException;
 
+/**
+ * Command to add an Event task to the task list
+ */
 public class EventCommand implements Command {
 
     private TaskList taskList;
