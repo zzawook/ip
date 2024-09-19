@@ -76,14 +76,14 @@ public class DialogBox extends HBox {
     private void formatDialogBox(boolean isUser) {
         if (isUser) {
             stackPane.setPadding(new Insets(10, 5, 0, 10));
-            setStyle("-fx-background-color: #dddddd; -fx-background-radius: 10px; -fx-padding: 0 10 0 10;");
+            setStyle("-fx-background-color: #dddddd; -fx-background-radius: 10px; -fx-padding: 0 10 10 10;");
         } else {
             stackPane.setPadding(new Insets(10, 15, 0, 5));
             ObservableList<Node> tmp = FXCollections.observableArrayList(this.getChildren());
             Collections.reverse(tmp);
             getChildren().setAll(tmp);
             setAlignment(Pos.TOP_LEFT);
-            setStyle("-fx-background-color: #aaaaaa; -fx-background-radius: 10px; -fx-padding: 0 10 0 10;");
+            setStyle("-fx-background-color: #aaaaaa; -fx-background-radius: 10px; -fx-padding: 0 10 10 10;");
         }
 
     }
