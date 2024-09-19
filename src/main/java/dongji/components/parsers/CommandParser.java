@@ -4,6 +4,7 @@ import java.time.format.DateTimeParseException;
 
 import dongji.Dongji;
 import dongji.components.DateTimeData;
+import dongji.components.commands.ByeCommand;
 import dongji.components.commands.Command;
 import dongji.components.commands.DeadlineCommand;
 import dongji.components.commands.DeleteCommand;
@@ -97,7 +98,7 @@ public class CommandParser {
             String cron = commandString.split(" /cron ")[1].trim();
             return new RecurringCommand(this.taskList, taskName, cron);
         case "bye":
-            this.dongji.terminate();
+            return new ByeCommand(this.dongji);
         default:
             throw new DongjiUnknownInstructionException("Unknown instruction! Please provide a valid instruction");
         }

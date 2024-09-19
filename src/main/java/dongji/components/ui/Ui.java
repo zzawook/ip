@@ -17,6 +17,7 @@ public class Ui {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+            stage.setTitle("Dongji - Your Personal To-do Companion");
             fxmlLoader.<MainWindow>getController().setDongji(dongji); // inject the Dongji instance
             stage.show();
         } catch (IOException e) {

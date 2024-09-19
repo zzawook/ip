@@ -34,7 +34,8 @@ public class MainWindow extends AnchorPane {
 
     /** Injects the Dongji instance */
     public void setDongji(Dongji d) {
-        dongji = d;
+        this.dongji = d;
+        this.dialogContainer.getChildren().add(DialogBox.getDongjiDialog(dongji.welcomeMessage(), dukeImage));
     }
 
     /**

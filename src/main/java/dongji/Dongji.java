@@ -26,6 +26,10 @@ public class Dongji {
         this.persistence.exportTasks();
     }
 
+    public String welcomeMessage() {
+        return "Hello! I'm Dongji, your Personal To-do Companion!\nWhat can I do for you?";
+    }
+
     /**
      * Generates a response for the user's chat message.
      */
