@@ -138,7 +138,9 @@ public class TaskList {
             return "No tasks in the list!";
         }
         StringBuilder sb = new StringBuilder();
-        this.taskList.stream().forEach(task -> sb.append(task.toString() + "\n"));
+        for (int i = 0; i < this.taskList.size(); i++) {
+            sb.append(i + 1 + ". " + this.taskList.get(i).toString() + "\n");
+        }
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
