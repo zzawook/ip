@@ -1,4 +1,4 @@
-package Dongji.components.commands;
+package dongji.components.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import dongji.components.DateTimeData;
-import dongji.components.commands.ListCommand;
 import dongji.components.tasks.Deadline;
 import dongji.components.tasks.Event;
 import dongji.components.tasks.TaskList;

@@ -1,4 +1,4 @@
-package Dongji.components.tasks;
+package dongji.components.tasks;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 
 import dongji.components.DateTimeData;
-import dongji.components.tasks.Event;
 import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public class EventTest {

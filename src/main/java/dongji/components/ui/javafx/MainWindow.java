@@ -47,7 +47,7 @@ public class MainWindow extends AnchorPane {
         String input = userInput.getText();
         String response = dongji.getResponse(input);
         dialogContainer.getChildren().addAll(DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDongji(response, dukeImage));
+                DialogBox.getDongjiDialog(response, dukeImage));
         userInput.clear();
     }
 }

@@ -1,4 +1,4 @@
-package Dongji;
+package dongji;
 
 public class DongjiTest {
     

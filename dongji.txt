@@ -1,5 +1,4 @@
 D | 0 | some deadline | 2024-08-30
-T | 0 | other todo
 R | 0 | somerecur | * * * 1,2 *
 R | 0 | other | 1 2 3 4 5
 R | 0 | otherrecur | * * * * *

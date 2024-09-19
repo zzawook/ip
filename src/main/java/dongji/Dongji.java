@@ -9,7 +9,7 @@ import dongji.exceptions.DongjiParseException;
 import dongji.exceptions.DongjiUnknownInstructionException;
 
 /**
- * Dongji backend application that processed commands and returns responses.
+ * Dongji backend application that processes commands and returns responses.
  */
 public class Dongji {
 

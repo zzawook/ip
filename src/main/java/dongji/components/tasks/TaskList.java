@@ -125,15 +125,14 @@ public class TaskList {
     public Stream<Task> stream() {
         return this.taskList.stream();
     }
-    
-    /** 
+
+    /**
      * Returns a string representation of the task list
      * 
      * @return String
      */
     public String listTasks() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n");
         this.taskList.stream().forEach(task -> sb.append(task.toString() + "\n"));
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
