@@ -21,7 +21,7 @@ import dongji.exceptions.DongjiParseException;
  */
 public class Txt implements Persistence {
 
-    private final String FILE_NAME = "dongji.txt";
+    private static final String FILE_NAME = "dongji.txt";
     private TaskList taskList;
 
     /**
