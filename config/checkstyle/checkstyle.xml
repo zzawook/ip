@@ -85,7 +85,6 @@
 
     <!-- Validate abbreviations (consecutive capital letters) length in identifier name -->
     <module name="AbbreviationAsWordInName">
-      <property name="ignoreFinal" value="true"/>
       <property name="allowedAbbreviationLength" value="1"/>
     </module>
 
@@ -122,7 +121,6 @@
       <metadata name="altname" value="MemberName"/>
       <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
       <property name="severity" value="warning"/>
-      <property name="ignoreFinal" value="true"/>
     </module>
 
     <module name="MethodName">
@@ -339,7 +337,7 @@
     </module>
     <module name="SeparatorWrap">
       <!-- Checks that the ",", "]", "[", "...", ";", "(" is at the previous end of line in a line wrap. -->
-      <property name="tokens" value="COMMA, RBRACK, ARRAY_DECLARATOR, ELLIPSIS, SEMI, LPAREN"/>
+      <property name="tokens" value="COMMA, RBRACK, ARRAY_DECLARATOR, ELLIPSIS, SEMI"/>
       <property name="option" value="eol"/>
     </module>
 

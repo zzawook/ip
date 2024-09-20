@@ -8,7 +8,7 @@ import dongji.Dongji;
  * Represents the command line interface for Dongji
  */
 public class CommandLine {
-    private final String SEPARATOR = "-------------------------------";
+    private static final String SEPARATOR = "-------------------------------";
     private Scanner scanner;
     private Dongji dongji;
 

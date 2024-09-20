@@ -33,30 +33,11 @@ jobs:
           java-version: "17"
           java-package: jdk+fx
 
-      #   - name: Build and check with Gradle
-      #     run: ./gradlew check
+      - name: Build and check with Gradle
+        run: ./gradlew check
 
       - name: Create jar file
         run: ./gradlew shadowjar
-
-      - name: Delete Release
-        uses: liudonghua123/delete-release-action@v1
-        with:
-          release_name: Release ${{ github.ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ github.ref }}-release
-          release_name: Release ${{ github.ref }}
-          body: "Automated release of Dongji"
-          draft: false
-          prerelease: false
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
@@ -64,6 +45,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: "./build/libs/dongji.jar"
           asset_name: dongji.jar
-          tag: ${{ github.ref }}
+          tag: latest
           overwrite: true
           body: "Automated release of Dongji"

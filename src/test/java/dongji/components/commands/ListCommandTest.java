@@ -14,8 +14,8 @@ import dongji.components.tasks.TaskList;
 import dongji.components.tasks.Todo;
 
 public class ListCommandTest {
-    ListCommand listCommand;
-    TaskList taskList;
+    private ListCommand listCommand;
+    private TaskList taskList;
 
     @BeforeEach
     public void setup() {
@@ -45,7 +45,8 @@ public class ListCommandTest {
         this.taskList.add(deadline);
 
         assertEquals(
-                "1. [T][ ] Test TODO\n2. [E][ ] Test Event (from: 2024-08-30 1200 to: 2024-08-30 1400)\n3. [D][ ] Test Deadline (by: 2024-08-30 1200)",
+                "1. [T][ ] Test TODO\n2. [E][ ] Test Event (from: 2024-08-30 1200 to: 2024-08-30 1400)"
+                        + "\n3. [D][ ] Test Deadline (by: 2024-08-30 1200)",
                 this.listCommand.execute());
     }
 

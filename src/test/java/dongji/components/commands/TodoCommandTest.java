@@ -11,13 +11,13 @@ import dongji.components.tasks.TaskList;
 
 public class TodoCommandTest {
 
-    static TaskList taskList;
+    private static TaskList taskList;
 
     @BeforeAll
     public static void setup() {
         taskList = new Dongji().getTaskList();
     }
-    
+
     @Test
     public void testValidTodoCommandExecution() {
         TodoCommand todoCommand = new TodoCommand(taskList, "test");

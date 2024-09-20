@@ -17,6 +17,7 @@ public class EventTest {
     public void testEventWithoutNameThrowsException() {
         LocalDateTime dateEarlier = LocalDateTime.of(2024, 8, 30, 12, 0);
         LocalDateTime dateLater = LocalDateTime.of(2024, 8, 30, 14, 0);
+
         assertThrows(DongjiEmptyTaskNameException.class,
                 () -> new Event("", new DateTimeData(dateEarlier, true), new DateTimeData(dateLater, true)),
                 "Task name cannot be empty! Please provide a task name");
@@ -26,7 +27,10 @@ public class EventTest {
     public void testEventWithValidStartDateWithTimeAndEndDateWithTime() {
         LocalDateTime dateEarlier = LocalDateTime.of(2024, 8, 30, 12, 0);
         LocalDateTime dateLater = LocalDateTime.of(2024, 8, 30, 14, 0);
-        Event event = assertDoesNotThrow(() -> new Event("Test Event", new DateTimeData(dateEarlier, true), new DateTimeData(dateLater, true)));
+
+        Event event = assertDoesNotThrow(() -> new Event("Test Event", new DateTimeData(dateEarlier, true),
+                new DateTimeData(dateLater, true)));
+
         assertNotNull(event);
     }
 
@@ -34,7 +38,10 @@ public class EventTest {
     public void testEventWithValidStartDateWithoutTimeAndEndDateWithoutTime() {
         LocalDateTime dateEarlier = LocalDateTime.of(2024, 8, 30, 0, 0);
         LocalDateTime dateLater = LocalDateTime.of(2024, 8, 30, 0, 0);
-        Event event = assertDoesNotThrow(() -> new Event("Test Event", new DateTimeData(dateEarlier, false), new DateTimeData(dateLater, false)));
+
+        Event event = assertDoesNotThrow(() -> new Event("Test Event", new DateTimeData(dateEarlier, false),
+                new DateTimeData(dateLater, false)));
+
         assertNotNull(event);
     }
 }

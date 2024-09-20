@@ -25,7 +25,7 @@ import dongji.exceptions.DongjiParseException;
 import dongji.exceptions.DongjiUnknownInstructionException;
 
 public class CommandParserTest {
-    static CommandParser commandParser;
+    private static CommandParser commandParser;
 
     @BeforeAll
     public static void setup() {
@@ -109,7 +109,8 @@ public class CommandParserTest {
     public void testParseAddEventCommandWithInvalidDateTimeFormatThrowsDongjiParseException() {
         assertThrows(DongjiParseException.class,
                 () -> commandParser.parseToCommand("event test /from 2024-08-30 12:00 /to 2024-08-30 14:00"));
-        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand("event test /from 20240830 1200 /to 20240830 1400"));
+        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand(
+                "event test /from 20240830 1200 /to 20240830 1400"));
     }
 
     @Test
