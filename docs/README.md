@@ -43,6 +43,8 @@ This command adds a task to the task list.
 todo Buy groceries
 ```
 
+---
+
 ### Adding Deadline
 
 To add a task with a deadline, use the following command:
@@ -55,6 +57,8 @@ This command adds a task with a specified deadline to the task list.
 ```
 deadline Submit assignment /by 2023-10-15 2359
 ```
+
+---
 
 ### Adding Event
 
@@ -69,6 +73,8 @@ This command adds an event task with a start and end date-time.
 event Team meeting /from 2023-10-20 1000 /to 2023-10-20 1200
 ```
 
+---
+
 ### Adding Recurring Task
 
 To add a recurring task, use the following command:
@@ -82,6 +88,8 @@ This command adds a recurring task to the task list.
 recur Water plants 0 7 * * *
 ```
 
+---
+
 ### Listing tasks
 
 To list all tasks in the task list, use the following command:
@@ -89,6 +97,8 @@ To list all tasks in the task list, use the following command:
 list
 ```
 This command lists all tasks with their task numbers.
+
+---
 
 ### Marking / Unmarking Tasks
 
@@ -107,6 +117,8 @@ mark 1
 unmark 1
 ```
 
+---
+
 ### Delete tasks
 
 To delete a task from the task list, use the following command:
@@ -118,6 +130,8 @@ delete <task number>
 ```
 delete 1
 ```
+
+---
 
 ### Finding with Keyword
 
@@ -131,6 +145,8 @@ find <keyword>
 find groceries
 ```
 
+---
+
 ### Help
 
 To show the list of commands, use the following command:
@@ -138,9 +154,13 @@ To show the list of commands, use the following command:
 help
 ```
 
+---
+
 ### Exiting the Application
 
 To exit the application, use the following command:
 ```
 bye
 ```
+
+---
