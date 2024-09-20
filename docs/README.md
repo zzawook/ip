@@ -7,7 +7,9 @@ Welcome to Dongji! This product helps you manage your tasks efficiently.
 
 ## How to install
 
-Download the JAR from the [GitHub Repo](https://github.com/zzawook/ip).
+Download the JAR from the [GitHub Repo](https://github.com/zzawook/ip). 
+Navigate to 'Releases' tab at the right and download the latest version of
+JAR.
 
 ## Features
 
