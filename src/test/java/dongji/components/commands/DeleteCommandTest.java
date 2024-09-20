@@ -10,6 +10,7 @@ import dongji.Dongji;
 import dongji.components.tasks.TaskList;
 import dongji.components.tasks.Todo;
 import dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.exceptions.DongjiIndexOutOfBoundException;
 
 public class DeleteCommandTest {
 
@@ -20,10 +21,17 @@ public class DeleteCommandTest {
         taskList = new Dongji().getTaskList();
         // Adding some tasks to the task list for testing
         try {
+            while (taskList.size() > 0) {
+                taskList.deleteTask(0);
+            }
+
             taskList.add(new Todo("Task 1"));
             taskList.add(new Todo("Task 2"));
             taskList.add(new Todo("Task 3"));
         } catch (DongjiEmptyTaskNameException e) {
+            System.out.println(e.getMessage());
+            assert false;
+        } catch (DongjiIndexOutOfBoundException e) {
             System.out.println(e.getMessage());
             assert false;
         }

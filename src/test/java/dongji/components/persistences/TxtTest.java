@@ -32,6 +32,43 @@ public class TxtTest {
         txt = new Txt(taskList);
     }
 
+    private void deleteExportedFile() {
+        File exportedFile = new File("dongji.txt");
+        if (exportedFile.exists()) {
+            exportedFile.delete();
+        }
+    }
+
+    private void clearExportedFile() {
+        File exportedFile = new File("dongji.txt");
+        if (exportedFile.exists()) {
+            try {
+                Files.writeString(exportedFile.toPath(), "");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void populateExportedFile() {
+        File exportedFile = new File("dongji.txt");
+        if (exportedFile.exists()) {
+            try {
+                Files.writeString(exportedFile.toPath(), "T | 0 | Test Task\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            try {
+                exportedFile.createNewFile();
+                Files.writeString(exportedFile.toPath(), "T | 0 | Test Task\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Test
     public void testExportTasks() {
         try {
@@ -62,12 +99,7 @@ public class TxtTest {
 
     @Test
     public void testImportTasks() {
-        File importedFile = tempDir.resolve("dongji.txt").toFile();
-        try {
-            Files.writeString(importedFile.toPath(), "T | 0 | Test Task\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.populateExportedFile();
 
         assertDoesNotThrow(() -> {
             TaskList taskList = txt.importTasks();
@@ -98,12 +130,7 @@ public class TxtTest {
 
     @Test
     public void testImportTasksWithEmptyFile() {
-        File importedFile = tempDir.resolve("dongji.txt").toFile();
-        try {
-            Files.writeString(importedFile.toPath(), "");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.clearExportedFile();
 
         assertDoesNotThrow(() -> {
             TaskList taskList = txt.importTasks();

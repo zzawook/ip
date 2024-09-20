@@ -10,6 +10,7 @@ import dongji.Dongji;
 import dongji.components.tasks.TaskList;
 import dongji.components.tasks.Todo;
 import dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.exceptions.DongjiIndexOutOfBoundException;
 
 public class FindCommandTest {
 
@@ -20,10 +21,17 @@ public class FindCommandTest {
         taskList = new Dongji().getTaskList();
         // Adding some tasks to the task list for testing
         try {
+            while (taskList.size() > 0) {
+                taskList.deleteTask(0);
+            }
+
             taskList.add(new Todo("Read book"));
             taskList.add(new Todo("Write code"));
             taskList.add(new Todo("Read documentation"));
         } catch (DongjiEmptyTaskNameException e) {
+            e.printStackTrace();
+            assert false;
+        } catch (DongjiIndexOutOfBoundException e) {
             e.printStackTrace();
             assert false;
         }
