@@ -1,9 +1,26 @@
 # Dongji User Guide
-# Dongji
 
 ![Product Screenshot](./Ui.png)
 
 Welcome to Dongji! This product helps you manage your tasks efficiently.
+<br>
+Dongji is an hybrid interfaced application that displays information 
+using graphics, but receives input via command-line.
+## Table of Contents
+
+- [How to install](#how-to-install)
+- [Features](#features)
+    - [Adding Todo](#adding-todo)
+    - [Adding Deadline](#adding-deadline)
+    - [Adding Event](#adding-event)
+    - [Adding Recurring Task](#adding-recurring-task)
+    - [Listing tasks](#listing-tasks)
+    - [Marking / Unmarking Tasks](#marking--unmarking-tasks)
+    - [Delete tasks](#delete-tasks)
+    - [Finding with Keyword](#finding-with-keyword)
+    - [Help](#help)
+    - [Exiting the Application](#exiting-the-application)
+
 
 ## How to install
 
