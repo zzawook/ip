@@ -14,6 +14,7 @@ import dongji.components.tasks.Task;
 import dongji.components.tasks.TaskList;
 import dongji.components.tasks.Todo;
 import dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.exceptions.DongjiParseException;
 
 /**
  * Represents a persistence layer for Dongji using txt file format
@@ -126,6 +127,8 @@ public class Txt implements Persistence {
                 task = new Recurring(taskName, taskRecordParts[3]);
             }
         } catch (DongjiEmptyTaskNameException e) {
+            System.out.println("Error reading from file: " + e.getMessage());
+        } catch (DongjiParseException e) {
             System.out.println("Error reading from file: " + e.getMessage());
         }
 

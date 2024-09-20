@@ -32,6 +32,7 @@ public class DeadlineCommandTest {
         DeadlineCommand deadlineCommand = new DeadlineCommand(taskList, "test", due);
         DeadlineCommand deadlineCommandWithoutTime = new DeadlineCommand(taskList, "test", dueWithoutTime);
         int initTaskListSize = taskList.size();
+
         assertDoesNotThrow(() -> deadlineCommand.execute());
         assertEquals(taskList.size(), initTaskListSize + 1);
 
@@ -42,12 +43,20 @@ public class DeadlineCommandTest {
     @Test
     public void testEmptyDeadlineCommandExecutionCatchesException() {
         DeadlineCommand deadlineCommand = new DeadlineCommand(taskList, "", due);
+
         assertEquals("OOPS!!! Task name cannot be empty! Please provide a task name", deadlineCommand.execute());
     }
 
     @Test
     public void testEmptyDeadlineCommandExecutionWithoutTimeCatchesException() {
         DeadlineCommand deadlineCommand = new DeadlineCommand(taskList, "", dueWithoutTime);
+
+        assertEquals("OOPS!!! Task name cannot be empty! Please provide a task name", deadlineCommand.execute());
+    }
+
+    @Test
+    public void testDeadlineCommandWithWhitespaceTaskName() {
+        DeadlineCommand deadlineCommand = new DeadlineCommand(taskList, "   ", due);
         assertEquals("OOPS!!! Task name cannot be empty! Please provide a task name", deadlineCommand.execute());
     }
 }

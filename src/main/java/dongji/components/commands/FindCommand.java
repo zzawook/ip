@@ -20,6 +20,10 @@ public class FindCommand implements Command {
     public FindCommand(TaskList taskList, String keyword) {
         this.taskList = taskList;
         this.keyword = keyword;
+
+        if (this.keyword == null) {
+            this.keyword = "";
+        }
     }
 
     /**

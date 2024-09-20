@@ -17,6 +17,7 @@ import dongji.components.commands.RecurringCommand;
 import dongji.components.commands.TodoCommand;
 import dongji.components.commands.UnmarkCommand;
 import dongji.components.tasks.TaskList;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 import dongji.exceptions.DongjiParseException;
 import dongji.exceptions.DongjiUnknownInstructionException;
 
@@ -44,7 +45,13 @@ public class CommandParser {
      * @throws DongjiUnknownInstructionException
      * @throws DongjiParseException
      */
-    public Command parseToCommand(String commandString) throws DongjiUnknownInstructionException, DongjiParseException {
+    public Command parseToCommand(String commandString)
+            throws DongjiUnknownInstructionException, DongjiParseException, DongjiEmptyTaskNameException {
+        String[] commandArgsSplitted = commandString.split(" ");
+        if (commandArgsSplitted.length == 0) {
+            throw new DongjiParseException("Can not parse the given input! Please provide a valid instruction");
+        }
+
         String command = commandString.split(" ")[0];
 
         switch (command) {
@@ -151,16 +158,20 @@ public class CommandParser {
         }
     }
 
-    private String parseKeyword(String commandString) {
-        assert commandString.split(" ", 2).length >= 2;
+    private String parseKeyword(String commandString) throws DongjiParseException {
+        if (commandString.split(" ", 2).length < 2) {
+            throw new DongjiParseException("Keyword cannot be empty! Please provide a keyword");
+        }
         return commandString.split(" ", 2)[1];
     }
 
-    private String extractTaskName(String commandString) {
-        assert commandString.split(" ", 2).length >= 2;
+    private String extractTaskName(String commandString) throws DongjiEmptyTaskNameException {
+        if (commandString.split(" ", 2).length != 2) {
+            throw new DongjiEmptyTaskNameException("Task name cannot be empty! Please provide a task name");
+        }
+        ;
         String afterCommand = commandString.split(" ", 2)[1];
 
-        assert afterCommand.split(" /", 2).length >= 1;
         return afterCommand.split(" /", 2)[0];
     }
 

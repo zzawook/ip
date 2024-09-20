@@ -5,8 +5,7 @@ import dongji.components.parsers.CommandParser;
 import dongji.components.persistences.Persistence;
 import dongji.components.persistences.Txt;
 import dongji.components.tasks.TaskList;
-import dongji.exceptions.DongjiParseException;
-import dongji.exceptions.DongjiUnknownInstructionException;
+import dongji.exceptions.DongjiException;
 
 /**
  * Dongji backend application that processes commands and returns responses.
@@ -52,9 +51,7 @@ public class Dongji {
         try {
             currentCommand = parser.parseToCommand(input);
             return currentCommand.execute();
-        } catch (DongjiUnknownInstructionException e) {
-            return e.getMessage();
-        } catch (DongjiParseException e) {
+        } catch (DongjiException e) {
             return e.getMessage();
         }
     }

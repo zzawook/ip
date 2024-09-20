@@ -21,6 +21,7 @@ import dongji.components.commands.MarkCommand;
 import dongji.components.commands.RecurringCommand;
 import dongji.components.commands.TodoCommand;
 import dongji.components.commands.UnmarkCommand;
+import dongji.exceptions.DongjiEmptyTaskNameException;
 import dongji.exceptions.DongjiParseException;
 import dongji.exceptions.DongjiUnknownInstructionException;
 
@@ -185,5 +186,52 @@ public class CommandParserTest {
     @Test
     public void testParseInvalidCommand() {
         assertThrows(DongjiUnknownInstructionException.class, () -> commandParser.parseToCommand("invalid"));
+    }
+
+    @Test
+    public void testParseDeleteCommandWithInvalidIndexThrowsDongjiParseException() {
+        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand("delete abc"));
+    }
+
+    @Test
+    public void testParseMarkCommandWithInvalidIndexThrowsDongjiParseException() {
+        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand("mark abc"));
+    }
+
+    @Test
+    public void testParseUnmarkCommandWithInvalidIndexThrowsDongjiParseException() {
+        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand("unmark abc"));
+    }
+
+    @Test
+    public void testParseRecurringCommandWithInvalidCronThrowsDongjiParseException() {
+        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand("recur test /cron * * * *"));
+        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand("recur test /cron * * * * * *"));
+    }
+
+    @Test
+    public void testParseEventCommandWithoutFromThrowsDongjiParseException() {
+        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand("event test /to 2024-08-30 1400"));
+    }
+
+    @Test
+    public void testParseEventCommandWithoutToThrowsDongjiParseException() {
+        assertThrows(DongjiParseException.class,
+                () -> commandParser.parseToCommand("event test /from 2024-08-30 1200"));
+    }
+
+    @Test
+    public void testParseDeadlineCommandWithoutByThrowsDongjiParseException() {
+        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand("deadline test"));
+    }
+
+    @Test
+    public void testParseTodoCommandWithoutTaskNameThrowsDongjiParseException() {
+        assertThrows(DongjiEmptyTaskNameException.class, () -> commandParser.parseToCommand("todo"));
+    }
+
+    @Test
+    public void testParseFindCommandWithoutKeywordThrowsDongjiParseException() {
+        assertThrows(DongjiParseException.class, () -> commandParser.parseToCommand("find"));
     }
 }

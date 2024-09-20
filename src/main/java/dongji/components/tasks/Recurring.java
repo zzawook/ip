@@ -1,6 +1,7 @@
 package dongji.components.tasks;
 
 import dongji.exceptions.DongjiEmptyTaskNameException;
+import dongji.exceptions.DongjiParseException;
 
 /**
  * Represents a Recurring task.
@@ -15,8 +16,11 @@ public class Recurring extends Task {
      * @param cron Cron expression of the Recurring task.
      * @throws DongjiEmptyTaskNameException If the name of the Recurring task is empty.
      */
-    public Recurring(String name, String cron) throws DongjiEmptyTaskNameException {
+    public Recurring(String name, String cron) throws DongjiEmptyTaskNameException, DongjiParseException {
         super(name);
+        if (!validateCron(cron)) {
+            throw new DongjiParseException("Invalid cron expression");
+        }
         this.cron = cron;
     }
 
@@ -27,6 +31,28 @@ public class Recurring extends Task {
      */
     public String getCron() {
         return cron;
+    }
+
+    private boolean validateCron(String cron) {
+        if (cron == null) {
+            return false;
+        }
+        String[] splitted = cron.split(" ");
+        if (splitted.length != 5) {
+            return false;
+        }
+
+        for (String s : splitted) {
+            if (!s.equals("*")) {
+                try {
+                    Integer.parseInt(s);
+                } catch (NumberFormatException e) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     private String parseCronToString() {
