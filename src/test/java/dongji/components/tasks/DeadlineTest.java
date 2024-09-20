@@ -26,7 +26,7 @@ public class DeadlineTest {
     }
 
     @Test
-    public void testDeadlineConstructor_EmptyName() {
+    public void testDeadlineConstructorEmptyName() {
         assertThrows(DongjiEmptyTaskNameException.class, () -> {
             new Deadline("", deadlineDateTime);
         });

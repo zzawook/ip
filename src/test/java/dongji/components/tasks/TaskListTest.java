@@ -46,7 +46,7 @@ public class TaskListTest {
     }
 
     @Test
-    public void testGet_ValidIndex() {
+    public void testGetValidIndex() {
         assertDoesNotThrow(() -> {
             Task task = taskList.get(1);
             assertEquals("Task 2", task.getName());
@@ -54,7 +54,7 @@ public class TaskListTest {
     }
 
     @Test
-    public void testGet_InvalidIndex() {
+    public void testGetInvalidIndex() {
         assertThrows(DongjiIndexOutOfBoundException.class, () -> {
             taskList.get(-1);
         });
@@ -64,7 +64,7 @@ public class TaskListTest {
     }
 
     @Test
-    public void testDeleteTask_ValidIndex() {
+    public void testDeleteTaskValidIndex() {
         assertDoesNotThrow(() -> {
             Task deletedTask = taskList.deleteTask(1);
             assertEquals("Task 2", deletedTask.getName());
@@ -73,7 +73,7 @@ public class TaskListTest {
     }
 
     @Test
-    public void testDeleteTask_InvalidIndex() {
+    public void testDeleteTaskInvalidIndex() {
         assertThrows(DongjiIndexOutOfBoundException.class, () -> {
             taskList.deleteTask(-1);
         });
@@ -83,7 +83,7 @@ public class TaskListTest {
     }
 
     @Test
-    public void testMark_ValidIndex() {
+    public void testMarkValidIndex() {
         assertDoesNotThrow(() -> {
             taskList.mark(1);
             Task task = taskList.get(1);
@@ -92,7 +92,7 @@ public class TaskListTest {
     }
 
     @Test
-    public void testMark_InvalidIndex() {
+    public void testMarkInvalidIndex() {
         assertThrows(DongjiIndexOutOfBoundException.class, () -> {
             taskList.mark(-1);
         });
@@ -102,7 +102,7 @@ public class TaskListTest {
     }
 
     @Test
-    public void testUnmark_ValidIndex() {
+    public void testUnmarkValidIndex() {
         assertDoesNotThrow(() -> {
             taskList.mark(1);
             taskList.unmark(1);
@@ -112,7 +112,7 @@ public class TaskListTest {
     }
 
     @Test
-    public void testUnmark_InvalidIndex() {
+    public void testUnmarkInvalidIndex() {
         assertThrows(DongjiIndexOutOfBoundException.class, () -> {
             taskList.unmark(-1);
         });
@@ -130,7 +130,7 @@ public class TaskListTest {
             e.printStackTrace();
             assert false;
         }
-        
+
         assertEquals(4, taskList.size());
     }
 }

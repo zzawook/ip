@@ -17,21 +17,21 @@ public class RecurringTest {
     }
 
     @Test
-    public void testRecurringConstructor_ValidCron() throws DongjiEmptyTaskNameException, DongjiParseException {
+    public void testRecurringConstructorValidCron() throws DongjiEmptyTaskNameException, DongjiParseException {
         Recurring recurring = new Recurring("Daily standup", "* * * * *");
         assertEquals("Daily standup", recurring.getName());
         assertEquals("* * * * *", recurring.getCron());
     }
 
     @Test
-    public void testRecurringConstructor_InvalidCron() {
+    public void testRecurringConstructorInvalidCron() {
         assertThrows(DongjiParseException.class, () -> {
             new Recurring("Daily standup", "invalid cron");
         });
     }
 
     @Test
-    public void testRecurringConstructor_EmptyName() {
+    public void testRecurringConstructorEmptyName() {
         assertThrows(DongjiEmptyTaskNameException.class, () -> {
             new Recurring("", "* * * * *");
         });

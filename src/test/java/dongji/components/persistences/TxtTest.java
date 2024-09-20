@@ -19,11 +19,11 @@ import dongji.exceptions.DongjiEmptyTaskNameException;
 
 public class TxtTest {
 
-    private Txt txt;
-    private TaskList taskList;
-
     @TempDir
     Path tempDir;
+
+    private Txt txt;
+    private TaskList taskList;
 
     @BeforeEach
     public void setup() {
@@ -56,7 +56,7 @@ public class TxtTest {
             e.printStackTrace();
             assert false;
         }
-        
+
         assertTrue(content.contains("Test Task"));
     }
 
@@ -92,7 +92,7 @@ public class TxtTest {
             e.printStackTrace();
             assert false;
         }
-        
+
         assertTrue(content.isEmpty());
     }
 
