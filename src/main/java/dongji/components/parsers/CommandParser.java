@@ -27,9 +27,9 @@ public class CommandParser {
     private TaskList taskList;
     private Dongji dongji;
 
-    public CommandParser(TaskList taskList, Dongji dongji) {
-        this.taskList = taskList;
+    public CommandParser(Dongji dongji) {
         this.dongji = dongji;
+        this.taskList = dongji.getTaskList();
     }
 
     /**

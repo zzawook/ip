@@ -2,6 +2,9 @@ package dongji.components.commands;
 
 public class HelpCommand implements Command {
 
+    /**
+     * Constructor for HelpCommand
+     */
     public HelpCommand() {
     }
 

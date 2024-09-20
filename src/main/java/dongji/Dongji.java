@@ -43,7 +43,7 @@ public class Dongji {
      * @return String
      */
     public String getResponse(String input) {
-        CommandParser parser = new CommandParser(this.taskList, this);
+        CommandParser parser = new CommandParser(this);
 
         Command currentCommand = null;
         try {
@@ -54,5 +54,9 @@ public class Dongji {
         } catch (DongjiParseException e) {
             return e.getMessage();
         }
+    }
+
+    public TaskList getTaskList() {
+        return this.taskList;
     }
 }

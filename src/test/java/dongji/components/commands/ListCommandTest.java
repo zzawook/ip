@@ -45,7 +45,12 @@ public class ListCommandTest {
         this.taskList.add(deadline);
 
         assertEquals(
-                "\n1. [T][ ] Test TODO\n2. [E][ ] Test Event (from: 2024-08-30 1200 to: 2024-08-30 1400)\n3. [D][ ] Test Deadline (by: 2024-08-30 1200)",
+                "1. [T][ ] Test TODO\n2. [E][ ] Test Event (from: 2024-08-30 1200 to: 2024-08-30 1400)\n3. [D][ ] Test Deadline (by: 2024-08-30 1200)",
                 this.listCommand.execute());
+    }
+
+    @Test
+    public void testExecuteWithNoItems() {
+        assertEquals("No tasks in the list!", this.listCommand.execute());
     }
 }

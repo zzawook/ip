@@ -14,6 +14,12 @@ public class RecurringCommand implements Command {
     private String taskName;
     private String cron;
 
+    /**
+     * Constructor for RecurringCommand
+     * @param taskList
+     * @param taskName
+     * @param cron
+     */
     public RecurringCommand(TaskList taskList, String taskName, String cron) {
         this.taskList = taskList;
         this.taskName = taskName;

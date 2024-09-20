@@ -15,6 +15,12 @@ public class DeadlineCommand implements Command {
     private String taskName;
     private DateTimeData deadline;
 
+    /**
+     * Constructor for DeadlineCommand
+     * @param taskList
+     * @param taskName
+     * @param deadlineDate
+     */
     public DeadlineCommand(TaskList taskList, String taskName, DateTimeData deadlineDate) {
         this.taskList = taskList;
         this.taskName = taskName;

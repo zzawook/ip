@@ -10,6 +10,10 @@ public class ByeCommand implements Command {
 
     private Dongji dongji;
 
+    /**
+     * Constructor for ByeCommand
+     * @param dongji Dongji instance
+     */
     public ByeCommand(Dongji dongji) {
         this.dongji = dongji;
     }

@@ -11,6 +11,11 @@ public class MarkCommand implements Command {
     private TaskList taskList;
     private int index;
 
+    /**
+     * Constructor for MarkCommand
+     * @param taskList
+     * @param index
+     */
     public MarkCommand(TaskList taskList, int index) {
         this.taskList = taskList;
         this.index = index;

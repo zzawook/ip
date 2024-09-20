@@ -11,6 +11,12 @@ public class FindCommand implements Command {
     private TaskList taskList;
     private String keyword;
 
+    /**
+     * Constructor for FindCommand
+     * 
+     * @param taskList
+     * @param keyword
+     */
     public FindCommand(TaskList taskList, String keyword) {
         this.taskList = taskList;
         this.keyword = keyword;

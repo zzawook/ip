@@ -11,6 +11,11 @@ public class DeleteCommand implements Command {
     private TaskList taskList;
     private int index;
 
+    /**
+     * Constructor for DeleteCommand
+     * @param taskList
+     * @param index
+     */
     public DeleteCommand(TaskList taskList, int index) {
         this.taskList = taskList;
         this.index = index;

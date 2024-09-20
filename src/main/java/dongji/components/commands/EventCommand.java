@@ -16,6 +16,13 @@ public class EventCommand implements Command {
     private DateTimeData startDate;
     private DateTimeData endDate;
 
+    /**
+     * Constructor for EventCommand
+     * @param taskList
+     * @param taskName
+     * @param startDate
+     * @param endDate
+     */
     public EventCommand(TaskList taskList, String taskName, DateTimeData startDate, DateTimeData endDate) {
         this.taskList = taskList;
         this.taskName = taskName;

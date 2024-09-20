@@ -12,6 +12,11 @@ public class TodoCommand implements Command {
     private TaskList taskList;
     private String taskName;
 
+    /**
+     * Constructor for TodoCommand
+     * @param taskList
+     * @param taskName
+     */
     public TodoCommand(TaskList taskList, String taskName) {
         this.taskList = taskList;
         this.taskName = taskName;

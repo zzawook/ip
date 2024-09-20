@@ -8,6 +8,10 @@ import dongji.components.tasks.TaskList;
 public class ListCommand implements Command {
     private TaskList taskList;
 
+    /**
+     * Constructor for ListCommand
+     * @param taskList
+     */
     public ListCommand(TaskList taskList) {
         this.taskList = taskList;
     }
