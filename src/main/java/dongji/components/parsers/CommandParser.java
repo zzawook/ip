@@ -34,7 +34,6 @@ public class CommandParser {
 
     /**
      * Parses the command string into a corresponding Command object
-     * 
      * @param commandString
      * @return Command
      * @throws DongjiUnknownInstructionException
