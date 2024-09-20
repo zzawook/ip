@@ -1,7 +1,0 @@
-T | 0 | add userdoc
-T | 1 | create help command
-T | 0 | handle codequality tag
-T | 0 | add tests
-T | 0 | resolve checkstyle
-T | 0 | check git messages
-T | 0 | configure java17 and test

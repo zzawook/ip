@@ -51,13 +51,13 @@ public class CommandParser {
         case "list":
             return new ListCommand(this.taskList);
         case "delete":
-            int deleteIndex = this.parseIndex(commandString);
+            int deleteIndex = this.parseIndex(commandString) - 1;
             return new DeleteCommand(this.taskList, deleteIndex);
         case "mark":
-            int markIndex = this.parseIndex(commandString);
+            int markIndex = this.parseIndex(commandString) - 1;
             return new MarkCommand(this.taskList, markIndex);
         case "unmark":
-            int unmarkIndex = this.parseIndex(commandString);
+            int unmarkIndex = this.parseIndex(commandString) - 1;
             return new UnmarkCommand(this.taskList, unmarkIndex);
         case "find":
             String keyword = this.parseKeyword(commandString);
@@ -140,9 +140,15 @@ public class CommandParser {
         return commandString.contains("/by");
     }
 
-    private int parseIndex(String commandString) {
+    private int parseIndex(String commandString) throws DongjiParseException {
         assert commandString.split(" ").length >= 2;
-        return Integer.parseInt(commandString.split(" ")[1]) - 1;
+        int parsedInt;
+        try {
+            parsedInt = Integer.parseInt(commandString.split(" ")[1]);
+            return parsedInt;
+        } catch (NumberFormatException e) {
+            throw new DongjiParseException("Invalid index provided. Please provide a valid index");
+        } 
     }
 
     private String parseKeyword(String commandString) {
