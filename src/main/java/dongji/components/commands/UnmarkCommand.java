@@ -12,6 +12,12 @@ public class UnmarkCommand implements Command {
     private TaskList taskList;
     private int index;
 
+    /**
+     * Constructor for UnmarkCommand
+     * 
+     * @param taskList
+     * @param index
+     */
     public UnmarkCommand(TaskList taskList, int index) {
         this.taskList = taskList;
         this.index = index;

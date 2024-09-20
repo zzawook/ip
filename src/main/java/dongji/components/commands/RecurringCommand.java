@@ -1,9 +1,9 @@
 package dongji.components.commands;
 
+import dongji.components.tasks.Recurring;
+import dongji.components.tasks.Task;
 import dongji.components.tasks.TaskList;
 import dongji.exceptions.DongjiEmptyTaskNameException;
-import dongji.components.tasks.Task;
-import dongji.components.tasks.Recurring;
 
 /**
  * Command to add a Recurring task to the task list
@@ -16,6 +16,7 @@ public class RecurringCommand implements Command {
 
     /**
      * Constructor for RecurringCommand
+     * 
      * @param taskList
      * @param taskName
      * @param cron
@@ -31,8 +32,7 @@ public class RecurringCommand implements Command {
         Task recurringTask;
         try {
             recurringTask = this.taskList.add(new Recurring(this.taskName, this.cron));
-        }
-        catch (DongjiEmptyTaskNameException e) {
+        } catch (DongjiEmptyTaskNameException e) {
             return e.getMessage();
         }
         return "added " + recurringTask.getName();

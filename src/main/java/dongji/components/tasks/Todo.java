@@ -12,6 +12,7 @@ public class Todo extends Task {
 
     /**
      * Returns the string representation of the Todo object.
+     * 
      * @return String
      */
     public String toString() {

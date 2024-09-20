@@ -10,6 +10,13 @@ public class Deadline extends Task {
 
     private DateTimeData deadline;
 
+    /**
+     * Constructor for Deadline
+     * 
+     * @param name
+     * @param deadline
+     * @throws DongjiEmptyTaskNameException
+     */
     public Deadline(String name, DateTimeData deadline) throws DongjiEmptyTaskNameException {
         super(name);
         this.deadline = deadline;
@@ -17,6 +24,7 @@ public class Deadline extends Task {
 
     /**
      * Returns the deadline of the task.
+     * 
      * @return DateTimeData
      */
     public DateTimeData getDeadline() {

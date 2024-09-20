@@ -18,6 +18,7 @@ public class EventCommand implements Command {
 
     /**
      * Constructor for EventCommand
+     * 
      * @param taskList
      * @param taskName
      * @param startDate

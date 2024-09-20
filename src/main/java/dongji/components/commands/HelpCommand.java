@@ -1,5 +1,8 @@
 package dongji.components.commands;
 
+/**
+ * Command to show the list of commands available in Dogji
+ */
 public class HelpCommand implements Command {
 
     /**
@@ -25,5 +28,4 @@ public class HelpCommand implements Command {
             + "10. help - Shows the list of commands\n"
             + "11. bye - Exits the application";
     }
-    
 }

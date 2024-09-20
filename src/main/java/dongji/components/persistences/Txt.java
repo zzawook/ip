@@ -23,6 +23,11 @@ public class Txt implements Persistence {
     private final String FILE_NAME = "dongji.txt";
     private TaskList taskList;
 
+    /**
+     * Constructor for Txt
+     * 
+     * @param taskList
+     */
     public Txt(TaskList taskList) {
         this.taskList = taskList;
     }

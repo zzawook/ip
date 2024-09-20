@@ -88,12 +88,26 @@ public class DialogBox extends HBox {
 
     }
 
+    /**
+     * Returns a dialog box representing the user's message.
+     * 
+     * @param text
+     * @param img
+     * @return
+     */
     public static DialogBox getUserDialog(String text, Image img) {
         DialogBox dialogBox = new DialogBox(text, img);
         dialogBox.formatDialogBox(true);
         return dialogBox;
     }
 
+    /**
+     * Returns a dialog box representing Dongji's message.
+     * 
+     * @param text
+     * @param img
+     * @return
+     */
     public static DialogBox getDongjiDialog(String text, Image img) {
         DialogBox dialogBox = new DialogBox(text, img);
         dialogBox.formatDialogBox(false);

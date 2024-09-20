@@ -8,6 +8,13 @@ import dongji.exceptions.DongjiEmptyTaskNameException;
 public class Recurring extends Task {
     private String cron;
 
+    /**
+     * Constructor for Recurring task.
+     * 
+     * @param name Name of the Recurring task.
+     * @param cron Cron expression of the Recurring task.
+     * @throws DongjiEmptyTaskNameException If the name of the Recurring task is empty.
+     */
     public Recurring(String name, String cron) throws DongjiEmptyTaskNameException {
         super(name);
         this.cron = cron;
@@ -15,6 +22,7 @@ public class Recurring extends Task {
 
     /**
      * Returns the cron expression of the Recurring task.
+     * 
      * @return String
      */
     public String getCron() {

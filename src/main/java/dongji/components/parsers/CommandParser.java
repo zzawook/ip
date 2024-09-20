@@ -27,6 +27,10 @@ public class CommandParser {
     private TaskList taskList;
     private Dongji dongji;
 
+    /**
+     * Constructor for CommandParser
+     * @param dongji
+     */
     public CommandParser(Dongji dongji) {
         this.dongji = dongji;
         this.taskList = dongji.getTaskList();
@@ -34,6 +38,7 @@ public class CommandParser {
 
     /**
      * Parses the command string into a corresponding Command object
+     * 
      * @param commandString
      * @return Command
      * @throws DongjiUnknownInstructionException

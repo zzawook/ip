@@ -16,6 +16,9 @@ public class Dongji {
     private TaskList taskList;
     private Persistence persistence;
 
+    /**
+     * Constructor for Dongji
+     */
     public Dongji() {
         this.taskList = new TaskList();
         this.persistence = new Txt(taskList);
@@ -56,6 +59,11 @@ public class Dongji {
         }
     }
 
+    /**
+     * Returns the TaskList object.
+     * 
+     * @return
+     */
     public TaskList getTaskList() {
         return this.taskList;
     }

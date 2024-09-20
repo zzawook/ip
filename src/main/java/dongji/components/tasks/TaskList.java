@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import dongji.exceptions.DongjiIndexOutOfBoundException;
 
 /**
- * Represents a list of tasks. Wrapper of List<Task>
+ * Represents a list of tasks. Wrapper of List<Task/>
  */
 public class TaskList {
 

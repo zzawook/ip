@@ -12,6 +12,7 @@ public class ByeCommand implements Command {
 
     /**
      * Constructor for ByeCommand
+     * 
      * @param dongji Dongji instance
      */
     public ByeCommand(Dongji dongji) {

@@ -12,6 +12,9 @@ public class CommandLine {
     private Scanner scanner;
     private Dongji dongji;
 
+    /**
+     * Constructor for CommandLine
+     */
     public CommandLine() {
         this.scanner = new Scanner(System.in);
         this.dongji = new Dongji();

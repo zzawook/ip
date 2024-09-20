@@ -9,6 +9,12 @@ public abstract class Task {
     private String name;
     private boolean isMarked;
 
+    /**
+     * Constructor for Task
+     * 
+     * @param name
+     * @throws DongjiEmptyTaskNameException
+     */
     public Task(String name) throws DongjiEmptyTaskNameException {
         if (name.trim().length() == 0) {
             throw new DongjiEmptyTaskNameException("Task name cannot be empty! Please provide a task name");
