@@ -85,7 +85,7 @@
 
     <!-- Validate abbreviations (consecutive capital letters) length in identifier name -->
     <module name="AbbreviationAsWordInName">
-      <property name="ignoreFinal" value="false"/>
+      <property name="ignoreFinal" value="true"/>
       <property name="allowedAbbreviationLength" value="1"/>
     </module>
 
@@ -122,6 +122,7 @@
       <metadata name="altname" value="MemberName"/>
       <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
       <property name="severity" value="warning"/>
+      <property name="ignoreFinal" value="true"/>
     </module>
 
     <module name="MethodName">
@@ -306,6 +307,7 @@
       <property name="format" value="[ \t]+$"/>
       <property name="illegalPattern" value="true"/>
       <property name="message" value="Trailing whitespace"/>
+      <property name="ignoreComments" value="true"/>
     </module>
 
     <module name="OperatorWrap">

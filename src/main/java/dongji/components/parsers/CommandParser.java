@@ -148,7 +148,7 @@ public class CommandParser {
             return parsedInt;
         } catch (NumberFormatException e) {
             throw new DongjiParseException("Invalid index provided. Please provide a valid index");
-        } 
+        }
     }
 
     private String parseKeyword(String commandString) {
@@ -192,7 +192,7 @@ public class CommandParser {
             startDateData = DateTimeData.fromString(beforeTo);
         } catch (DateTimeParseException e) {
             throw new DongjiParseException(
-                    "Invalid date format for event start date. Please follow the format: " 
+                    "Invalid date format for event start date. Please follow the format: "
                             + "event <task name> /from <yyyy-mm-dd [hhmm; optional]>"
                             + " /to <yyyy-mm-dd [hhmm; optional]>");
         }

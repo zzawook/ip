@@ -37,5 +37,4 @@ public class RecurringCommand implements Command {
         }
         return "added " + recurringTask.getName();
     }
-    
 }
