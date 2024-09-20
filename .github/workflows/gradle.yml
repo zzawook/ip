@@ -39,6 +39,11 @@ jobs:
       - name: Create jar file
         run: ./gradlew shadowjar
 
+      - name: Delete Release
+        uses: liudonghua123/delete-release-action@v1
+        with:
+          release_name: Release ${{ github.ref }}
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
