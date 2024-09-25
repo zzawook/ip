@@ -43,7 +43,7 @@ test {
 }
 
 application {
-    mainClass.set("dongji/Main")
+    mainClass.set("dongji/Launcher")
 }
 
 shadowJar {
