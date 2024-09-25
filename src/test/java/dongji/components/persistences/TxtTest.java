@@ -34,7 +34,7 @@ public class TxtTest {
     }
 
     @AfterAll
-    private void deleteExportedFile() {
+    private static void deleteExportedFile() {
         File exportedFile = new File("dongji.txt");
         if (exportedFile.exists()) {
             exportedFile.delete();
